@@ -39,8 +39,7 @@ function saveEvent(
 ): EmailNotificationSettingsState {
   return {
     ...state,
-    status: 'pending',
-    // originalSettings: state.draftSettings,
+    originalSettings: state.draftSettings,
   };
 }
 

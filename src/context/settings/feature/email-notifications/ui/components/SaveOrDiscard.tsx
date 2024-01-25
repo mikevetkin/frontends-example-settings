@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
 import { SaveOrDiscardViewState } from './SaveOrDiscardViewState';
-// TODO: Это должно быть контейнером
+
 interface SaveOrDiscardProps {
   viewState: SaveOrDiscardViewState;
   onClickSave: () => void;
