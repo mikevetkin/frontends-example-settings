@@ -1,4 +1,5 @@
 import { emailNotificationSettings } from '../entity/EmailNotificationSettings';
+import { EmailSettingsKey } from '../entity/EmailSettingsKey';
 import { emailNotificationSettingsReducer } from './EmailNotificationSettingsReducer';
 import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
 
@@ -8,56 +9,64 @@ describe('EmailNotificationSettingsReducer (Способы использова�
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
-            settings: {
-              'marketing-emails': false,
-            },
+            marketingEmails: false,
           }),
         }),
-        { type: 'ToggleEmailSettingsEvent', key: 'marketing-emails' }
+        {
+          type: 'ToggleEmailSettingsEvent',
+          key: EmailSettingsKey.MarketingEmails,
+        }
       );
 
-      expect(state.draftSettings.isEnabledMarketingEmails).toBe(true);
+      expect(state.draftSettings.marketingEmails).toBe(true);
     });
 
     test('Отключает маркетинговые уведомления', () => {
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
-            isEnabledMarketingEmails: true,
+            marketingEmails: true,
           }),
         }),
-        { type: 'ToggleEmailSettingsEvent', key: 'marketing-emails' }
+        {
+          type: 'ToggleEmailSettingsEvent',
+          key: EmailSettingsKey.MarketingEmails,
+        }
       );
 
-      expect(state.draftSettings.isEnabledMarketingEmails).toBe(false);
+      expect(state.draftSettings.marketingEmails).toBe(false);
     });
-  });
 
-  describe('ToggleSecurityEmailsEvent (Переключатель активности уведомлений безопасности)', () => {
-    test('Включает уведомления', () => {
+    test('Включает уведомления безопасности', () => {
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
-            isEnabledSecurityEmails: false,
+            securityEmails: false,
           }),
         }),
-        { type: 'ToggleEmailSettingsEvent', key: 'security-emails' }
+        {
+          type: 'ToggleEmailSettingsEvent',
+          key: EmailSettingsKey.SecurityEmails,
+        }
       );
 
-      expect(state.draftSettings.isEnabledSecurityEmails).toBe(true);
+      expect(state.draftSettings.securityEmails).toBe(true);
     });
 
-    test('Отключает уведомления', () => {
+    test('Отключает уведомления безопасности', () => {
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
-            isEnabledSecurityEmails: true,
+            securityEmails: false,
           }),
         }),
-        { type: 'ToggleEmailSettingsEvent', key: 'security-emails' }
+        {
+          type: 'ToggleEmailSettingsEvent',
+          key: EmailSettingsKey.SecurityEmails,
+        }
       );
 
-      expect(state.draftSettings.isEnabledSecurityEmails).toBe(false);
+      expect(state.draftSettings.securityEmails).toBe(true);
     });
   });
 
@@ -65,17 +74,17 @@ describe('EmailNotificationSettingsReducer (Способы использова�
     const state = emailNotificationSettingsReducer(
       emailNotificationSettingsState({
         draftSettings: emailNotificationSettings({
-          isEnabledSecurityEmails: true,
+          securityEmails: true,
         }),
         originalSettings: emailNotificationSettings({
-          isEnabledSecurityEmails: false,
+          securityEmails: false,
         }),
       }),
       { type: 'DiscardEvent' }
     );
 
     test('Сбрасывает настройки черновика до оригинальных', () => {
-      expect(state.draftSettings.isEnabledSecurityEmails).toBe(false);
+      expect(state.draftSettings.securityEmails).toBe(false);
     });
   });
 
@@ -83,17 +92,17 @@ describe('EmailNotificationSettingsReducer (Способы использова�
     const state = emailNotificationSettingsReducer(
       emailNotificationSettingsState({
         draftSettings: emailNotificationSettings({
-          isEnabledSecurityEmails: true,
+          securityEmails: true,
         }),
         originalSettings: emailNotificationSettings({
-          isEnabledSecurityEmails: false,
+          securityEmails: false,
         }),
       }),
       { type: 'SaveEvent' }
     );
 
     test('Записывает настройки черновика как оригинальные', () => {
-      expect(state.originalSettings.isEnabledSecurityEmails).toBe(true);
+      expect(state.originalSettings.securityEmails).toBe(true);
     });
   });
 
