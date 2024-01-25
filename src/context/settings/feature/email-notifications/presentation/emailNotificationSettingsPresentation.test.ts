@@ -1,77 +1,78 @@
-// import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscardViewState';
-// import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
-// import { emailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
-// import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
-// import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
+import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
+import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
+import { emailNotificationSettingsState } from '../domian/functional-core/EmailNotificationSettingsState';
+import { emailNotificationSettingsPresentation } from './emailNotificationSettingsPresentation';
+import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
+import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 
-// describe.skip('EmailNotificationSettingsViewModel (Модель представления настроек уведомлений по почте)', () => {
-//   describe('Если данные загружаются', () => {
-//     const viewModel = new EmailNotificationSettingsViewModel(
-//       emailNotificationSettingsState({
-//         status: 'loading',
-//         originalSettings: emailNotificationSettings(),
-//         draftSettings: emailNotificationSettings(),
-//       })
-//     );
+describe('emailNotificationSettingsPresentation (Презентейшн настроек уведомлений по почте)', () => {
+  describe('Если данные загружаются', () => {
+    const viewState = emailNotificationSettingsPresentation(
+      emailNotificationSettingsState({
+        status: 'loading',
+        originalSettings: emailNotificationSettings(),
+        draftSettings: emailNotificationSettings(),
+      })
+    );
 
-//     test('Пользователь видит скелетон', () => {
-//       viewModel.settings.map((setting) =>
-//         expect(setting).toBeInstanceOf(SkeletonViewState)
-//       );
-//     });
+    test('Пользователь видит скелетон', () => {
+      viewState.settings.map((setting) =>
+        expect(setting).toBeInstanceOf(SkeletonViewState)
+      );
+    });
 
-//     test('Кнопки сохранения и отмены скрыты', () => {
-//       expect(viewModel.saveOrDiscard).toBeUndefined();
-//     });
-//   });
+    test('Кнопки сохранения и отмены скрыты', () => {
+      expect(viewState.saveOrDiscard).toBeUndefined();
+    });
+  });
 
-//   describe('Если данные загружены', () => {
-//     const viewModel = new EmailNotificationSettingsViewModel(
-//       emailNotificationSettingsState({
-//         status: 'idle',
-//         originalSettings: emailNotificationSettings(),
-//         draftSettings: emailNotificationSettings(),
-//       })
-//     );
+  describe('Если данные загружены', () => {
+    const viewModel = emailNotificationSettingsPresentation(
+      emailNotificationSettingsState({
+        status: 'idle',
+        originalSettings: emailNotificationSettings(),
+        draftSettings: emailNotificationSettings(),
+      })
+    );
 
-//     test('Пользователь видит список настроек', () => {
-//       viewModel.settings.map((setting) =>
-//         expect(setting).toBeInstanceOf(SettingSwitchViewState)
-//       );
-//     });
-//   });
+    test('Пользователь видит список настроек', () => {
+      viewModel.settings.map((setting) =>
+        expect(setting).toBeInstanceOf(SettingSwitchViewState)
+      );
+    });
+  });
 
-//   describe.skip('Если данные отправляются', () => {
-//     test('Управление настройками заблокировано', () => {});
+  describe.skip('Если данные отправляются', () => {
+    test('Управление настройками заблокировано', () => {});
 
-//     test('На кнопке "Сохранить" индикатор загрузки', () => {});
-//   });
+    test('На кнопке "Сохранить" индикатор загрузки', () => {});
+  });
 
-//   describe('Кнопки сохранения и отмены', () => {
-//     test('Если пользователь не вносил изменения, кнопки скрыты', () => {
-//       const viewModel = new EmailNotificationSettingsViewModel(
-//         emailNotificationSettingsState({
-//           originalSettings: emailNotificationSettings(),
-//           draftSettings: emailNotificationSettings(),
-//         })
-//       );
+  describe('Кнопки сохранения и отмены', () => {
+    test('Если пользователь не вносил изменения, кнопки скрыты', () => {
+      const viewModel = emailNotificationSettingsPresentation(
+        emailNotificationSettingsState({
+          originalSettings: emailNotificationSettings(),
+          draftSettings: emailNotificationSettings(),
+        })
+      );
 
-//       expect(viewModel.saveOrDiscard).toBeUndefined();
-//     });
+      expect(viewModel.saveOrDiscard).toBeUndefined();
+    });
 
-//     test('При внесении пользователем изменений кнопки показываются', () => {
-//       const viewModel = new EmailNotificationSettingsViewModel(
-//         emailNotificationSettingsState({
-//           originalSettings: emailNotificationSettings({
-//             isEnabledMarketingEmails: true,
-//           }),
-//           draftSettings: emailNotificationSettings({
-//             isEnabledMarketingEmails: false,
-//           }),
-//         })
-//       );
+    test('При внесении пользователем изменений кнопки показываются', () => {
+      const viewModel = emailNotificationSettingsPresentation(
+        emailNotificationSettingsState({
+          originalSettings: emailNotificationSettings({
+            marketingEmails: true,
+          }),
+          draftSettings: emailNotificationSettings({
+            marketingEmails: false,
+          }),
+        })
+      );
 
-//       expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
-//     });
-//   });
-// });
+      expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
+    });
+  });
+});
