@@ -6,14 +6,6 @@ export interface ToggleEmailSettingsEvent {
   key: EmailSettingsKey;
 }
 
-export interface ToggleMarketingEmailsEvent {
-  type: 'ToggleMarketingEmailsEvent';
-}
-
-export interface ToggleSecurityEmailsEvent {
-  type: 'ToggleSecurityEmailsEvent';
-}
-
 export interface SaveEvent {
   type: 'SaveEvent';
 }
@@ -29,8 +21,6 @@ export interface ReceiveEmailSettingsEvent {
 
 export type EmailNotificationSettingsEvent =
   | ToggleEmailSettingsEvent
-  | ToggleSecurityEmailsEvent
-  | ToggleMarketingEmailsEvent
   | SaveEvent
   | DiscardEvent
   | ReceiveEmailSettingsEvent;

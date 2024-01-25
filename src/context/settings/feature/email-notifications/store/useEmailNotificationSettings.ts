@@ -17,8 +17,8 @@ export const useEmailNotificationSettings = () => {
       dispatch({
         type: 'ReceiveEmailSettingsEvent',
         data: emailNotificationSettings({
-          isEnabledMarketingEmails: false,
-          isEnabledSecurityEmails: true,
+          marketingEmails: false,
+          securityEmails: true,
         }),
       });
     }, 2000);

@@ -1,5 +1,5 @@
 import { Switch } from '@/components/ui/switch';
-import { SettingSwitchViewState } from '../view-model/SettingSwitchViewState';
+import { SettingSwitchViewState } from './SettingSwitchViewState';
 
 export interface SettingSwitchProps {
   viewState: SettingSwitchViewState;

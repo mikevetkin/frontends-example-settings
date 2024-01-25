@@ -1,7 +1,7 @@
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 
 export class SaveOrDiscardViewState {
-  save: ButtonViewState;
+  save: ButtonViewState; // | LoadingButtonViewState
   discard: ButtonViewState;
 
   constructor({ save, discard }: SaveOrDiscardViewState) {

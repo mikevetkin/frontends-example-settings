@@ -1,8 +1,8 @@
-import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewState';
+import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscardViewState';
 import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
 import { emailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
 import { EmailNotificationSettingsViewModel } from './EmailNotificationSettingsViewModel';
-import { SettingSwitchViewState } from './SettingSwitchViewState';
+import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 
 describe('EmailNotificationSettingsViewModel (Модель представления настроек уведомлений по почте)', () => {

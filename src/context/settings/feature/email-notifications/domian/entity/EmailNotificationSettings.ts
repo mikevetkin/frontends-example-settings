@@ -1,12 +1,11 @@
-export interface EmailNotificationSettings {
-  isEnabledMarketingEmails: boolean;
-  isEnabledSecurityEmails: boolean;
-}
+import { EmailSettingsKey } from './EmailSettingsKey';
+
+export type EmailNotificationSettings = Record<EmailSettingsKey, boolean>;
 
 export const emailNotificationSettings = (
   data: Partial<EmailNotificationSettings> = {}
 ): EmailNotificationSettings => ({
-  isEnabledMarketingEmails: false,
-  isEnabledSecurityEmails: false,
+  marketingEmails: false,
+  securityEmails: false,
   ...data,
 });

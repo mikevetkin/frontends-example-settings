@@ -8,7 +8,9 @@ describe('EmailNotificationSettingsReducer (Способы использова�
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
-            isEnabledMarketingEmails: false,
+            settings: {
+              'marketing-emails': false,
+            },
           }),
         }),
         { type: 'ToggleEmailSettingsEvent', key: 'marketing-emails' }

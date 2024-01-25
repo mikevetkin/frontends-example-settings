@@ -1,10 +1,20 @@
-import { SettingSwitchViewState } from './SettingSwitchViewState';
+import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
 import { EmailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewState';
+import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscardViewState';
 import _ from 'lodash';
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
+import { EmailSettingsKey } from '../../domian/entity/EmailSettingsKey';
+
+// export class EmailNotificationSettingsViewState {
+//   settings: SettingSwitchViewState[] | SkeletonViewState[];
+//   saveOrDiscard: SaveOrDiscardViewState | undefined;
+// }
+
+// export const EmailNotificationSettingsPresentation (state: EmailNotificationSettingsState): EmailNotificationSettingsViewState => {
+
+// }
 
 export class EmailNotificationSettingsViewModel {
   settings: SettingSwitchViewState[] | SkeletonViewState[];
@@ -21,20 +31,20 @@ export class EmailNotificationSettingsViewModel {
       case 'idle':
         this.settings = [
           new SettingSwitchViewState({
-            key: 'marketing-emails',
+            key: EmailSettingsKey.MarketingEmails,
             title: 'Marketing emails',
             description:
               'Receive emails about new products, features, and more.',
             switcher: new SwitcherViewState({
-              checked: draftSettings.isEnabledMarketingEmails,
+              checked: draftSettings[EmailSettingsKey.MarketingEmails],
             }),
           }),
           new SettingSwitchViewState({
-            key: 'security-emails',
+            key: EmailSettingsKey.SecurityEmails,
             title: 'Security emails',
             description: 'Receive emails about your account security.',
             switcher: new SwitcherViewState({
-              checked: draftSettings.isEnabledSecurityEmails,
+              checked: draftSettings[EmailSettingsKey.SecurityEmails],
             }),
           }),
         ];

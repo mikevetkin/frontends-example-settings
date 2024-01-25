@@ -1,13 +1,14 @@
 import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
 import { SettingSwitch } from '../../components/SettingSwitch';
-import { SettingSwitchViewState } from '../../view-model/SettingSwitchViewState';
+import { SettingSwitchViewState } from '../../components/SettingSwitchViewState';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useViewController } from './useViewController';
 
 // ViewState = EmailSettingsViewState | ErrorViewState | SkeletonViewState;
 
 export const EmailNotificationSettings = () => {
-  const { viewModel, onCheckedChange, onClickSave, onClickDiscard, dispatch } =
+  // TODO: Выкинуть этот бойлерплейт
+  const { viewModel, onCheckedChange, onClickSave, onClickDiscard } =
     useViewController();
 
   return (

@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { SaveOrDiscardViewState } from '../view-model/SaveOrDiscardViewState';
+import { SaveOrDiscardViewState } from './SaveOrDiscardViewState';
 // TODO: Это должно быть контейнером
 interface SaveOrDiscardProps {
   viewModel: SaveOrDiscardViewState;
@@ -15,10 +15,13 @@ export const SaveOrDiscard: React.FC<SaveOrDiscardProps> = ({
   return (
     <>
       <div className="flex justify-end gap-2">
-        <Button variant="secondary" onClick={onClickSave}>
+        <Button variant="secondary" onClick={onClickDiscard}>
           Discard
         </Button>
-        <Button onClick={onClickDiscard}>{viewModel.save.label}</Button>
+        <Button onClick={onClickSave}>
+          {viewModel.save.label}
+          {}
+        </Button>
       </div>
     </>
   );

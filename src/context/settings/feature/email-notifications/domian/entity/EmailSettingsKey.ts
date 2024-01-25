@@ -1,1 +1,6 @@
-export type EmailSettingsKey = 'marketing-emails' | 'security-emails';
+export enum EmailSettingsKey {
+  MarketingEmails = 'marketingEmails',
+  SecurityEmails = 'securityEmails',
+}
+
+// Тут можно сгенерить из этого список

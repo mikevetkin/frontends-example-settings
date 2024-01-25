@@ -10,10 +10,6 @@ export const emailNotificationSettingsReducer = (
   event: EmailNotificationSettingsEvent
 ) => {
   switch (event.type) {
-    case 'ToggleMarketingEmailsEvent':
-      return toggleMarketingEmails(state);
-    case 'ToggleSecurityEmailsEvent':
-      return toggleSecurityEmails(state);
     case 'SaveEvent':
       return saveEvent(state);
     case 'DiscardEvent':
@@ -21,50 +17,19 @@ export const emailNotificationSettingsReducer = (
     case 'ReceiveEmailSettingsEvent':
       return receiveEmailSettings(state, event);
     case 'ToggleEmailSettingsEvent':
-      return toggleEmailSettings(state, event);
+      return toggleEmailSetting(state, event);
   }
 };
 
-function toggleEmailSettings(
+function toggleEmailSetting(
   state: EmailNotificationSettingsState,
   event: ToggleEmailSettingsEvent
 ): EmailNotificationSettingsState {
-  switch (event.key) {
-    case 'marketing-emails':
-      return toggleMarketingEmails(state);
-    case 'security-emails':
-      return toggleSecurityEmails(state);
-  }
-
   return {
     ...state,
     draftSettings: {
       ...state.draftSettings,
-      isEnabledMarketingEmails: !state.draftSettings.isEnabledMarketingEmails,
-    },
-  };
-}
-
-function toggleMarketingEmails(
-  state: EmailNotificationSettingsState
-): EmailNotificationSettingsState {
-  return {
-    ...state,
-    draftSettings: {
-      ...state.draftSettings,
-      isEnabledMarketingEmails: !state.draftSettings.isEnabledMarketingEmails,
-    },
-  };
-}
-
-function toggleSecurityEmails(
-  state: EmailNotificationSettingsState
-): EmailNotificationSettingsState {
-  return {
-    ...state,
-    draftSettings: {
-      ...state.draftSettings,
-      isEnabledSecurityEmails: !state.draftSettings.isEnabledSecurityEmails,
+      [event.key]: !state.draftSettings[event.key],
     },
   };
 }
