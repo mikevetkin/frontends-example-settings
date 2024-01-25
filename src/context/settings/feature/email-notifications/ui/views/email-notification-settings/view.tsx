@@ -4,10 +4,11 @@ import { SettingSwitchViewState } from '../../view-model/SettingSwitchViewState'
 import { Skeleton } from '@/components/ui/skeleton';
 import { useViewController } from './useViewController';
 
-// ViewModel = EmailSettingsViewModel | ErrorViewModel | SkeletonViewModel;
+// ViewState = EmailSettingsViewState | ErrorViewState | SkeletonViewState;
 
 export const EmailNotificationSettings = () => {
-  const { viewModel, dispatch } = useViewController();
+  const { viewModel, onCheckedChange, onClickSave, onClickDiscard, dispatch } =
+    useViewController();
 
   return (
     <section>
@@ -17,13 +18,20 @@ export const EmailNotificationSettings = () => {
       <div className="space-y-4">
         {viewModel.settings.map((setting) =>
           setting instanceof SettingSwitchViewState ? (
-            <SettingSwitch viewModel={setting} dispatch={dispatch} />
+            <SettingSwitch
+              viewState={setting}
+              onCheckedChange={() => onCheckedChange(setting.key)}
+            />
           ) : (
             <Skeleton className="h-[76px] w-full" />
           )
         )}
         {viewModel.saveOrDiscard && (
-          <SaveOrDiscard viewModel={viewModel.saveOrDiscard} />
+          <SaveOrDiscard
+            viewModel={viewModel.saveOrDiscard}
+            onClickSave={onClickSave}
+            onClickDiscard={onClickDiscard}
+          />
         )}
       </div>
     </section>

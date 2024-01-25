@@ -1,11 +1,7 @@
-export class SwitcherViewState<E> {
+export class SwitcherViewState {
   checked: boolean;
-  onCheckedChange: (value: boolean) => void;
-  event?: E;
 
-  constructor({ checked, onCheckedChange, event }: SwitcherViewState<E>) {
+  constructor({ checked }: SwitcherViewState) {
     this.checked = checked;
-    this.onCheckedChange = onCheckedChange;
-    this.event = event;
   }
 }

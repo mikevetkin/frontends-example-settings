@@ -2,6 +2,7 @@ import { EmailNotificationSettingsState } from './EmailNotificationSettingsState
 import {
   EmailNotificationSettingsEvent,
   ReceiveEmailSettingsEvent,
+  ToggleEmailSettingsEvent,
 } from './EmailNotificationSettingsEvent';
 
 export const emailNotificationSettingsReducer = (
@@ -19,8 +20,30 @@ export const emailNotificationSettingsReducer = (
       return discardEvent(state);
     case 'ReceiveEmailSettingsEvent':
       return receiveEmailSettings(state, event);
+    case 'ToggleEmailSettingsEvent':
+      return toggleEmailSettings(state, event);
   }
 };
+
+function toggleEmailSettings(
+  state: EmailNotificationSettingsState,
+  event: ToggleEmailSettingsEvent
+): EmailNotificationSettingsState {
+  switch (event.key) {
+    case 'marketing-emails':
+      return toggleMarketingEmails(state);
+    case 'security-emails':
+      return toggleSecurityEmails(state);
+  }
+
+  return {
+    ...state,
+    draftSettings: {
+      ...state.draftSettings,
+      isEnabledMarketingEmails: !state.draftSettings.isEnabledMarketingEmails,
+    },
+  };
+}
 
 function toggleMarketingEmails(
   state: EmailNotificationSettingsState

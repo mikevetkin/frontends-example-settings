@@ -3,28 +3,28 @@ import { emailNotificationSettingsReducer } from './EmailNotificationSettingsRed
 import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
 
 describe('EmailNotificationSettingsReducer (Способы использования настроек уведомлений)', () => {
-  describe('ToggleMarketingEmailsEvent (Переключатель активности маркетинговых уведомлений)', () => {
-    test('Включает уведомления', () => {
+  describe('ToggleEmailSettingsEvent (Переключатель настроек)', () => {
+    test('Включает маркетинговые уведомления', () => {
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
             isEnabledMarketingEmails: false,
           }),
         }),
-        { type: 'ToggleMarketingEmailsEvent' }
+        { type: 'ToggleEmailSettingsEvent', key: 'marketing-emails' }
       );
 
       expect(state.draftSettings.isEnabledMarketingEmails).toBe(true);
     });
 
-    test('Отключает уведомления', () => {
+    test('Отключает маркетинговые уведомления', () => {
       const state = emailNotificationSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailNotificationSettings({
             isEnabledMarketingEmails: true,
           }),
         }),
-        { type: 'ToggleMarketingEmailsEvent' }
+        { type: 'ToggleEmailSettingsEvent', key: 'marketing-emails' }
       );
 
       expect(state.draftSettings.isEnabledMarketingEmails).toBe(false);
@@ -39,7 +39,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
             isEnabledSecurityEmails: false,
           }),
         }),
-        { type: 'ToggleSecurityEmailsEvent' }
+        { type: 'ToggleEmailSettingsEvent', key: 'security-emails' }
       );
 
       expect(state.draftSettings.isEnabledSecurityEmails).toBe(true);
@@ -52,7 +52,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
             isEnabledSecurityEmails: true,
           }),
         }),
-        { type: 'ToggleSecurityEmailsEvent' }
+        { type: 'ToggleEmailSettingsEvent', key: 'security-emails' }
       );
 
       expect(state.draftSettings.isEnabledSecurityEmails).toBe(false);

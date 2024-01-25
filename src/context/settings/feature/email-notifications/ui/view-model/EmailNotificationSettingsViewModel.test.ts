@@ -12,8 +12,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
         status: 'loading',
         originalSettings: emailNotificationSettings(),
         draftSettings: emailNotificationSettings(),
-      }),
-      () => null
+      })
     );
 
     test('Пользователь видит скелетон', () => {
@@ -33,11 +32,10 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
         status: 'idle',
         originalSettings: emailNotificationSettings(),
         draftSettings: emailNotificationSettings(),
-      }),
-      () => null
+      })
     );
 
-    test.skip('Пользователь видит список настроек', () => {
+    test('Пользователь видит список настроек', () => {
       viewModel.settings.map((setting) =>
         expect(setting).toBeInstanceOf(SettingSwitchViewState)
       );
@@ -56,8 +54,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
         emailNotificationSettingsState({
           originalSettings: emailNotificationSettings(),
           draftSettings: emailNotificationSettings(),
-        }),
-        () => null
+        })
       );
 
       expect(viewModel.saveOrDiscard).toBeUndefined();
@@ -72,8 +69,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
           draftSettings: emailNotificationSettings({
             isEnabledMarketingEmails: false,
           }),
-        }),
-        () => null
+        })
       );
 
       expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);

@@ -1,11 +1,14 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
+import { EmailSettingsKey } from '../../domian/entity/EmailSettingsKey';
 
-export class SettingSwitchViewState<E> {
+export class SettingSwitchViewState {
+  key: EmailSettingsKey;
   title: string;
   description: string;
-  switcher: SwitcherViewState<E>;
+  switcher: SwitcherViewState;
 
-  constructor({ title, description, switcher }: SettingSwitchViewState<E>) {
+  constructor({ key, title, description, switcher }: SettingSwitchViewState) {
+    this.key = key;
     this.title = title;
     this.description = description;
     this.switcher = switcher;
