@@ -1,10 +1,10 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { EmailNotificationSettingsState } from '../../domian/functional-core/EmailNotificationSettingsState';
-import { EmailNotificationSettingsViewState } from './EmailNotificationSettingsViewState';
-import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
-import { EmailSettingsKey } from '../../domian/entity/EmailSettingsKey';
+import { EmailNotificationSettingsState } from '../domian/functional-core/EmailNotificationSettingsState';
+import { EmailNotificationSettingsViewState } from '../ui/views/EmailNotificationSettingsViewState';
+import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
+import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { SaveOrDiscardViewState } from '../components/SaveOrDiscardViewState';
+import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import _ from 'lodash';
 

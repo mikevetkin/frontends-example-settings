@@ -1,8 +1,9 @@
 import { useEffect, useReducer } from 'react';
-import { emailNotificationSettingsState } from '../domian/functional-core/EmailNotificationSettingsState';
-import { emailNotificationSettingsReducer } from '../domian/functional-core/EmailNotificationSettingsReducer';
-import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
-import { emailNotificationSettingsPresentation } from '../ui/views/emailNotificationSettingsPresentation';
+import { emailNotificationSettingsState } from '../../domian/functional-core/EmailNotificationSettingsState';
+import { emailNotificationSettingsReducer } from '../../domian/functional-core/EmailNotificationSettingsReducer';
+import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
+import { emailNotificationSettingsPresentation } from '../../presentation/emailNotificationSettingsPresentation';
+
 export const useEmailNotificationSettings = () => {
   const [state, dispatch] = useReducer(
     emailNotificationSettingsReducer,
