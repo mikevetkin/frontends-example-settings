@@ -20,16 +20,7 @@ export class EmailNotificationSettingsViewModel {
 
     switch (status) {
       case 'loading':
-        this.settings = [
-          new SkeletonViewModel({
-            width: '100%',
-            height: '76px',
-          }),
-          new SkeletonViewModel({
-            width: '100%',
-            height: '76px',
-          }),
-        ];
+        this.settings = [new SkeletonViewModel(), new SkeletonViewModel()];
 
         break;
       case 'idle':

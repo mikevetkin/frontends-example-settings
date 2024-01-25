@@ -17,9 +17,7 @@ export const EmailNotificationSettings = () => {
           setting instanceof SettingSwitchViewModel ? (
             <SettingSwitch viewModel={setting} />
           ) : (
-            <Skeleton
-              className={`w-[${setting.width}] h-[${setting.height}]`}
-            />
+            <Skeleton className="h-[76px] w-full" />
           )
         )}
         {viewModel.saveOrDiscard && (
