@@ -15,7 +15,6 @@ export const SettingSwitch: React.FC<SettingSwitchProps> = ({ viewModel }) => {
       <Switch
         checked={viewModel.switcher.checked}
         onCheckedChange={viewModel.switcher.onCheckedChange}
-        disabled={viewModel.switcher.isDisabled}
       />
     </div>
   );
