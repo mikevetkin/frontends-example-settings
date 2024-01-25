@@ -1,4 +1,4 @@
-import { SaveOrDiscard } from '@/context/settings/shared/save-or-discard/ui/components/SaveOrDiscard';
+import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
 import { useEmailNotificationSettings } from '../../store/useEmailNotificationSettings';
 import { SettingSwitch } from '../components/SettingSwitch';
 import { SettingSwitchViewModel } from '../view-model/SettingSwitchViewModel';

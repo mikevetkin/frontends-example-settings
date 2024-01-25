@@ -3,7 +3,7 @@ import { EmailNotificationSettingsState } from '../../store/EmailNotificationSet
 import { SwitcherViewModel } from '@/core/view-model/SwitcherViewModel';
 import { Dispatch } from 'react';
 import { EmailNotificationSettingsEvent } from '../../store/EmailNotificationSettingsEvent';
-import { SaveOrDiscardViewModel } from '@/context/settings/shared/save-or-discard/ui/view-model/SaveOrDiscardViewModel';
+import { SaveOrDiscardViewModel } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewModel';
 import _ from 'lodash';
 import { ButtonViewModel } from '@/core/view-model/ButtonViewModel';
 import { SkeletonViewModel } from '@/core/view-model/SkeletonViewModel';

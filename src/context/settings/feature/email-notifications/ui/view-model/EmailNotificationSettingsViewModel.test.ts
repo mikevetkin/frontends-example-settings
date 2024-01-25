@@ -1,4 +1,4 @@
-import { SaveOrDiscardViewModel } from '@/context/settings/shared/save-or-discard/ui/view-model/SaveOrDiscardViewModel';
+import { SaveOrDiscardViewModel } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewModel';
 import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
 import { emailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
 import { EmailNotificationSettingsViewModel } from './EmailNotificationSettingsViewModel';
