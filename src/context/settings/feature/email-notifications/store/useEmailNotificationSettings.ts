@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
 import { emailNotificationSettingsReducer } from './EmailNotificationSettingsReducer';
-import { EmailNotificationSettingsViewModel } from '../ui/view-model/EmailNotificationSettingsViewModel';
 import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
 
 export const useEmailNotificationSettings = () => {
@@ -9,8 +8,6 @@ export const useEmailNotificationSettings = () => {
     emailNotificationSettingsReducer,
     emailNotificationSettingsState()
   );
-
-  const viewModel = new EmailNotificationSettingsViewModel(state, dispatch);
 
   /**
    * Эмуляция загрузки данных
@@ -28,6 +25,7 @@ export const useEmailNotificationSettings = () => {
   }, []);
 
   return {
-    viewModel,
+    state,
+    dispatch,
   };
 };

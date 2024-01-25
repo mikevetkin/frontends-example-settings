@@ -1,11 +1,17 @@
 import { Switch } from '@/components/ui/switch';
 import { SettingSwitchViewModel } from '../view-model/SettingSwitchViewModel';
+import { EmailNotificationSettingsEvent } from '../../store/EmailNotificationSettingsEvent';
+import { Dispatch } from 'react';
 
 export interface SettingSwitchProps {
   viewModel: SettingSwitchViewModel;
+  dispatch: Dispatch<EmailNotificationSettingsEvent>;
 }
 
-export const SettingSwitch: React.FC<SettingSwitchProps> = ({ viewModel }) => {
+export const SettingSwitch: React.FC<SettingSwitchProps> = ({
+  viewModel,
+  dispatch,
+}) => {
   return (
     <div className=" flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
       <div className="space-y-0.5">
@@ -14,7 +20,7 @@ export const SettingSwitch: React.FC<SettingSwitchProps> = ({ viewModel }) => {
       </div>
       <Switch
         checked={viewModel.switcher.checked}
-        onCheckedChange={viewModel.switcher.onCheckedChange}
+        onCheckedChange={() => dispatch(viewModel.switcher.action)}
       />
     </div>
   );

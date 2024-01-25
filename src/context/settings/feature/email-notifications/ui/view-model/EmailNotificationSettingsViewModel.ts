@@ -31,6 +31,9 @@ export class EmailNotificationSettingsViewModel {
               'Receive emails about new products, features, and more.',
             switcher: new SwitcherViewModel({
               checked: draftSettings.isEnabledMarketingEmails,
+              action: {
+                type: 'ToggleMarketingEmailsEvent',
+              },
               onCheckedChange: () =>
                 dispatch({
                   type: 'ToggleMarketingEmailsEvent',
@@ -42,6 +45,9 @@ export class EmailNotificationSettingsViewModel {
             description: 'Receive emails about your account security.',
             switcher: new SwitcherViewModel({
               checked: draftSettings.isEnabledSecurityEmails,
+              action: {
+                type: 'ToggleSecurityEmailsEvent',
+              },
               onCheckedChange: () =>
                 dispatch({
                   type: 'ToggleSecurityEmailsEvent',

@@ -1,11 +1,11 @@
 import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
-import { useEmailNotificationSettings } from '../../store/useEmailNotificationSettings';
-import { SettingSwitch } from '../components/SettingSwitch';
-import { SettingSwitchViewModel } from '../view-model/SettingSwitchViewModel';
+import { SettingSwitch } from '../../components/SettingSwitch';
+import { SettingSwitchViewModel } from '../../view-model/SettingSwitchViewModel';
 import { Skeleton } from '@/components/ui/skeleton';
+import { useViewController } from './useViewController';
 
 export const EmailNotificationSettings = () => {
-  const { viewModel } = useEmailNotificationSettings();
+  const { viewModel, dispatch } = useViewController();
 
   return (
     <section>
@@ -15,7 +15,7 @@ export const EmailNotificationSettings = () => {
       <div className="space-y-4">
         {viewModel.settings.map((setting) =>
           setting instanceof SettingSwitchViewModel ? (
-            <SettingSwitch viewModel={setting} />
+            <SettingSwitch viewModel={setting} dispatch={dispatch} />
           ) : (
             <Skeleton className="h-[76px] w-full" />
           )
