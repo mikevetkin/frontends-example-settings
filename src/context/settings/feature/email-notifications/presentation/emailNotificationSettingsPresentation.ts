@@ -20,18 +20,17 @@ export const emailNotificationSettingsPresentation = (
   switch (status) {
     case 'loading':
       settings = [new SkeletonViewState(), new SkeletonViewState()];
-
       break;
     case 'idle':
     case 'pending':
-      settings = Object.keys(originalSettings).map(
+      settings = (Object.keys(originalSettings) as EmailSettingsKey[]).map(
         (key) =>
           new SettingSwitchViewState({
-            key: key as EmailSettingsKey,
-            title: mapEmailSettingsTitle[key as EmailSettingsKey],
-            description: mapEmailSettingsDescription[key as EmailSettingsKey],
+            key: key,
+            title: mapEmailSettingsTitle[key],
+            description: mapEmailSettingsDescription[key],
             switcher: new SwitcherViewState({
-              checked: draftSettings[key as EmailSettingsKey],
+              checked: draftSettings[key],
               disabled: status === 'pending',
             }),
           })

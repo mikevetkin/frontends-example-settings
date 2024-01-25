@@ -58,7 +58,7 @@ function receiveEmailSettings(
 ): EmailNotificationSettingsState {
   return {
     ...state,
-    status: 'idle',
+    status: 'pending',
     originalSettings: event.data,
     draftSettings: event.data,
   };

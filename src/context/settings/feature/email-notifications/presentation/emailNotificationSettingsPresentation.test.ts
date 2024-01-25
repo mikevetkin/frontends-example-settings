@@ -42,8 +42,22 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     });
   });
 
-  describe.skip('Если данные отправляются', () => {
-    test('Управление настройками заблокировано', () => {});
+  describe('Если данные отправляются', () => {
+    const viewState = emailNotificationSettingsPresentation(
+      emailNotificationSettingsState({
+        status: 'pending',
+        originalSettings: emailNotificationSettings(),
+        draftSettings: emailNotificationSettings(),
+      })
+    );
+
+    test('Управление настройками заблокировано', () => {
+      viewState.settings.forEach((setting) =>
+        expect(
+          (setting as SettingSwitchViewState).switcher.disabled
+        ).toBeTruthy()
+      );
+    });
 
     test('На кнопке "Сохранить" индикатор загрузки', () => {});
   });
