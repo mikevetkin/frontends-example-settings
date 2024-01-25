@@ -1,10 +1,8 @@
 import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
-import { SettingSwitch } from '../../components/SettingSwitch';
-import { SettingSwitchViewState } from '../../components/SettingSwitchViewState';
+import { SettingSwitch } from '../components/SettingSwitch';
+import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useEmailNotificationSettings } from '../../../store/useEmailNotificationSettings';
-
-// ViewState = EmailSettingsViewState | ErrorViewState | SkeletonViewState;
+import { useEmailNotificationSettings } from '../../store/useEmailNotificationSettings';
 
 export const EmailNotificationSettings = () => {
   const { viewState, dispatch } = useEmailNotificationSettings();

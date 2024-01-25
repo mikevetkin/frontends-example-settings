@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
 import { emailNotificationSettingsReducer } from './EmailNotificationSettingsReducer';
 import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
-import { EmailNotificationSettingsViewModel } from '../ui/view-model/EmailNotificationSettingsViewModel';
+import { emailNotificationSettingsPresentation } from '../ui/views/EmailNotificationSettingsPresentation';
 
 export const useEmailNotificationSettings = () => {
   const [state, dispatch] = useReducer(
@@ -26,7 +26,7 @@ export const useEmailNotificationSettings = () => {
   }, []);
 
   return {
-    viewState: new EmailNotificationSettingsViewModel(state),
+    viewState: emailNotificationSettingsPresentation(state),
     dispatch,
   };
 };
