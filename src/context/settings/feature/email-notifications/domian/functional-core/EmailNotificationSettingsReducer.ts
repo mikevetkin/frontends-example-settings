@@ -39,7 +39,8 @@ function saveEvent(
 ): EmailNotificationSettingsState {
   return {
     ...state,
-    originalSettings: state.draftSettings,
+    status: 'pending',
+    // originalSettings: state.draftSettings,
   };
 }
 
@@ -58,7 +59,7 @@ function receiveEmailSettings(
 ): EmailNotificationSettingsState {
   return {
     ...state,
-    status: 'pending',
+    status: 'idle',
     originalSettings: event.data,
     draftSettings: event.data,
   };

@@ -42,10 +42,13 @@ export const emailNotificationSettingsPresentation = (
     ? undefined
     : new SaveOrDiscardViewState({
         save: new ButtonViewState({
-          label: 'Save',
+          icon: status === 'pending' ? 'pending' : undefined,
+          label: status === 'pending' ? 'Pending' : 'Save',
+          disabled: status === 'pending',
         }),
         discard: new ButtonViewState({
           label: 'Discard',
+          disabled: status === 'pending',
         }),
       });
 

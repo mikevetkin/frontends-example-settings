@@ -30,7 +30,7 @@ export const EmailNotificationSettings = () => {
         )}
         {viewState.saveOrDiscard && (
           <SaveOrDiscard
-            viewModel={viewState.saveOrDiscard}
+            viewState={viewState.saveOrDiscard}
             onClickSave={() => dispatch({ type: 'SaveEvent' })}
             onClickDiscard={() => dispatch({ type: 'DiscardEvent' })}
           />

@@ -27,7 +27,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
   });
 
   describe('Если данные загружены', () => {
-    const viewModel = emailNotificationSettingsPresentation(
+    const viewState = emailNotificationSettingsPresentation(
       emailNotificationSettingsState({
         status: 'idle',
         originalSettings: emailNotificationSettings(),
@@ -36,7 +36,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     );
 
     test('Пользователь видит список настроек', () => {
-      viewModel.settings.map((setting) =>
+      viewState.settings.map((setting) =>
         expect(setting).toBeInstanceOf(SettingSwitchViewState)
       );
     });
@@ -64,18 +64,18 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
 
   describe('Кнопки сохранения и отмены', () => {
     test('Если пользователь не вносил изменения, кнопки скрыты', () => {
-      const viewModel = emailNotificationSettingsPresentation(
+      const viewState = emailNotificationSettingsPresentation(
         emailNotificationSettingsState({
           originalSettings: emailNotificationSettings(),
           draftSettings: emailNotificationSettings(),
         })
       );
 
-      expect(viewModel.saveOrDiscard).toBeUndefined();
+      expect(viewState.saveOrDiscard).toBeUndefined();
     });
 
     test('При внесении пользователем изменений кнопки показываются', () => {
-      const viewModel = emailNotificationSettingsPresentation(
+      const viewState = emailNotificationSettingsPresentation(
         emailNotificationSettingsState({
           originalSettings: emailNotificationSettings({
             marketingEmails: true,
@@ -86,7 +86,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
         })
       );
 
-      expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
+      expect(viewState.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
     });
   });
 });
