@@ -1,9 +1,9 @@
-import { SaveOrDiscardViewModel } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewModel';
+import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewState';
 import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
 import { emailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
 import { EmailNotificationSettingsViewModel } from './EmailNotificationSettingsViewModel';
-import { SettingSwitchViewModel } from './SettingSwitchViewModel';
-import { SkeletonViewModel } from '@/core/view-model/SkeletonViewModel';
+import { SettingSwitchViewState } from './SettingSwitchViewState';
+import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 
 describe('EmailNotificationSettingsViewModel (Модель представления настроек уведомлений по почте)', () => {
   describe('Если данные загружаются', () => {
@@ -18,7 +18,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
 
     test('Пользователь видит скелетон', () => {
       viewModel.settings.map((setting) =>
-        expect(setting).toBeInstanceOf(SkeletonViewModel)
+        expect(setting).toBeInstanceOf(SkeletonViewState)
       );
     });
 
@@ -39,7 +39,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
 
     test.skip('Пользователь видит список настроек', () => {
       viewModel.settings.map((setting) =>
-        expect(setting).toBeInstanceOf(SettingSwitchViewModel)
+        expect(setting).toBeInstanceOf(SettingSwitchViewState)
       );
     });
   });
@@ -76,7 +76,7 @@ describe('EmailNotificationSettingsViewModel (Модель представле�
         () => null
       );
 
-      expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewModel);
+      expect(viewModel.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
     });
   });
 });

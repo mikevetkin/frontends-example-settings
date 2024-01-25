@@ -1,16 +1,16 @@
-import { SettingSwitchViewModel } from './SettingSwitchViewModel';
+import { SettingSwitchViewState } from './SettingSwitchViewState';
 import { EmailNotificationSettingsState } from '../../store/EmailNotificationSettingsState';
-import { SwitcherViewModel } from '@/core/view-model/SwitcherViewModel';
+import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { Dispatch } from 'react';
 import { EmailNotificationSettingsEvent } from '../../store/EmailNotificationSettingsEvent';
-import { SaveOrDiscardViewModel } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewModel';
+import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/view-model/SaveOrDiscardViewState';
 import _ from 'lodash';
-import { ButtonViewModel } from '@/core/view-model/ButtonViewModel';
-import { SkeletonViewModel } from '@/core/view-model/SkeletonViewModel';
+import { ButtonViewState } from '@/core/view-state/ButtonViewState';
+import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 
 export class EmailNotificationSettingsViewModel {
-  settings: SettingSwitchViewModel[] | SkeletonViewModel[];
-  saveOrDiscard: SaveOrDiscardViewModel | undefined;
+  settings: SettingSwitchViewState[] | SkeletonViewState[];
+  saveOrDiscard: SaveOrDiscardViewState | undefined;
 
   constructor(
     state: EmailNotificationSettingsState,
@@ -20,18 +20,18 @@ export class EmailNotificationSettingsViewModel {
 
     switch (status) {
       case 'loading':
-        this.settings = [new SkeletonViewModel(), new SkeletonViewModel()];
+        this.settings = [new SkeletonViewState(), new SkeletonViewState()];
 
         break;
       case 'idle':
         this.settings = [
-          new SettingSwitchViewModel({
+          new SettingSwitchViewState({
             title: 'Marketing emails',
             description:
               'Receive emails about new products, features, and more.',
-            switcher: new SwitcherViewModel({
+            switcher: new SwitcherViewState({
               checked: draftSettings.isEnabledMarketingEmails,
-              action: {
+              event: {
                 type: 'ToggleMarketingEmailsEvent',
               },
               onCheckedChange: () =>
@@ -40,12 +40,12 @@ export class EmailNotificationSettingsViewModel {
                 }),
             }),
           }),
-          new SettingSwitchViewModel({
+          new SettingSwitchViewState({
             title: 'Security emails',
             description: 'Receive emails about your account security.',
-            switcher: new SwitcherViewModel({
+            switcher: new SwitcherViewState({
               checked: draftSettings.isEnabledSecurityEmails,
-              action: {
+              event: {
                 type: 'ToggleSecurityEmailsEvent',
               },
               onCheckedChange: () =>
@@ -60,15 +60,15 @@ export class EmailNotificationSettingsViewModel {
 
     this.saveOrDiscard = _.isEqual(draftSettings, originalSettings)
       ? undefined
-      : new SaveOrDiscardViewModel({
-          save: new ButtonViewModel({
+      : new SaveOrDiscardViewState({
+          save: new ButtonViewState({
             label: 'Save',
             onClick: () =>
               dispatch({
                 type: 'SaveEvent',
               }),
           }),
-          discard: new ButtonViewModel({
+          discard: new ButtonViewState({
             label: 'Discard',
             onClick: () =>
               dispatch({

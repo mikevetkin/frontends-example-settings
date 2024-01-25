@@ -1,8 +1,10 @@
 import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
 import { SettingSwitch } from '../../components/SettingSwitch';
-import { SettingSwitchViewModel } from '../../view-model/SettingSwitchViewModel';
+import { SettingSwitchViewState } from '../../view-model/SettingSwitchViewState';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useViewController } from './useViewController';
+
+// ViewModel = EmailSettingsViewModel | ErrorViewModel | SkeletonViewModel;
 
 export const EmailNotificationSettings = () => {
   const { viewModel, dispatch } = useViewController();
@@ -14,7 +16,7 @@ export const EmailNotificationSettings = () => {
       </h3>
       <div className="space-y-4">
         {viewModel.settings.map((setting) =>
-          setting instanceof SettingSwitchViewModel ? (
+          setting instanceof SettingSwitchViewState ? (
             <SettingSwitch viewModel={setting} dispatch={dispatch} />
           ) : (
             <Skeleton className="h-[76px] w-full" />

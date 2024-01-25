@@ -1,10 +1,10 @@
 import { Switch } from '@/components/ui/switch';
-import { SettingSwitchViewModel } from '../view-model/SettingSwitchViewModel';
+import { SettingSwitchViewState } from '../view-model/SettingSwitchViewState';
 import { EmailNotificationSettingsEvent } from '../../store/EmailNotificationSettingsEvent';
 import { Dispatch } from 'react';
 
 export interface SettingSwitchProps {
-  viewModel: SettingSwitchViewModel;
+  viewModel: SettingSwitchViewState;
   dispatch: Dispatch<EmailNotificationSettingsEvent>;
 }
 
@@ -20,7 +20,7 @@ export const SettingSwitch: React.FC<SettingSwitchProps> = ({
       </div>
       <Switch
         checked={viewModel.switcher.checked}
-        onCheckedChange={() => dispatch(viewModel.switcher.action)}
+        onCheckedChange={() => dispatch(viewModel.switcher.event)}
       />
     </div>
   );

@@ -1,8 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { SaveOrDiscardViewModel } from '../view-model/SaveOrDiscardViewModel';
+import { SaveOrDiscardViewState } from '../view-model/SaveOrDiscardViewState';
 
 interface SaveOrDiscardProps {
-  viewModel: SaveOrDiscardViewModel;
+  viewModel: SaveOrDiscardViewState;
 }
 
 export const SaveOrDiscard: React.FC<SaveOrDiscardProps> = ({ viewModel }) => {
