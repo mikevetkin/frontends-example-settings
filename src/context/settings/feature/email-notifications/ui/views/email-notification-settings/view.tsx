@@ -2,14 +2,12 @@ import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui
 import { SettingSwitch } from '../../components/SettingSwitch';
 import { SettingSwitchViewState } from '../../components/SettingSwitchViewState';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useViewController } from './useViewController';
+import { useEmailNotificationSettings } from '../../../store/useEmailNotificationSettings';
 
 // ViewState = EmailSettingsViewState | ErrorViewState | SkeletonViewState;
 
 export const EmailNotificationSettings = () => {
-  // TODO: Выкинуть этот бойлерплейт
-  const { viewModel, onCheckedChange, onClickSave, onClickDiscard } =
-    useViewController();
+  const { viewState, dispatch } = useEmailNotificationSettings();
 
   return (
     <section>
@@ -17,21 +15,26 @@ export const EmailNotificationSettings = () => {
         Email Notifications
       </h3>
       <div className="space-y-4">
-        {viewModel.settings.map((setting) =>
+        {viewState.settings.map((setting) =>
           setting instanceof SettingSwitchViewState ? (
             <SettingSwitch
               viewState={setting}
-              onCheckedChange={() => onCheckedChange(setting.key)}
+              onCheckedChange={() =>
+                dispatch({
+                  type: 'ToggleEmailSettingsEvent',
+                  key: setting.key,
+                })
+              }
             />
           ) : (
             <Skeleton className="h-[76px] w-full" />
           )
         )}
-        {viewModel.saveOrDiscard && (
+        {viewState.saveOrDiscard && (
           <SaveOrDiscard
-            viewModel={viewModel.saveOrDiscard}
-            onClickSave={onClickSave}
-            onClickDiscard={onClickDiscard}
+            viewModel={viewState.saveOrDiscard}
+            onClickSave={() => dispatch({ type: 'SaveEvent' })}
+            onClickDiscard={() => dispatch({ type: 'DiscardEvent' })}
           />
         )}
       </div>

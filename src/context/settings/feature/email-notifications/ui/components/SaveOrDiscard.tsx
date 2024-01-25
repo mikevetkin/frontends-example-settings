@@ -18,10 +18,7 @@ export const SaveOrDiscard: React.FC<SaveOrDiscardProps> = ({
         <Button variant="secondary" onClick={onClickDiscard}>
           Discard
         </Button>
-        <Button onClick={onClickSave}>
-          {viewModel.save.label}
-          {}
-        </Button>
+        <Button onClick={onClickSave}>{viewModel.save.label}</Button>
       </div>
     </>
   );
