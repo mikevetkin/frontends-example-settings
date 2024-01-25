@@ -1,4 +1,4 @@
-import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
+import { emailNotificationSettings } from '../entity/EmailNotificationSettings';
 import { emailNotificationSettingsReducer } from './EmailNotificationSettingsReducer';
 import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
 

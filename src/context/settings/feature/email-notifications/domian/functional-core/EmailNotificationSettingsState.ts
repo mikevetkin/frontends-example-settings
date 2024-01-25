@@ -1,7 +1,7 @@
 import {
   EmailNotificationSettings,
   emailNotificationSettings,
-} from '../domian/entity/EmailNotificationSettings';
+} from '../entity/EmailNotificationSettings';
 
 export interface EmailNotificationSettingsState {
   status: 'loading' | 'idle';

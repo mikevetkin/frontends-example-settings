@@ -1,5 +1,5 @@
-import { EmailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
-import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
+import { EmailNotificationSettings } from '../entity/EmailNotificationSettings';
+import { EmailSettingsKey } from '../entity/EmailSettingsKey';
 
 export interface ToggleEmailSettingsEvent {
   type: 'ToggleEmailSettingsEvent';
