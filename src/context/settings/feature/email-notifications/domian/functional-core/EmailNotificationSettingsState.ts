@@ -4,7 +4,7 @@ import {
 } from '../entity/EmailNotificationSettings';
 
 export interface EmailNotificationSettingsState {
-  status: 'loading' | 'idle';
+  status: 'loading' | 'idle' | 'pending';
   originalSettings: EmailNotificationSettings;
   draftSettings: EmailNotificationSettings;
 }

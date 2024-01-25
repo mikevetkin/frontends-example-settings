@@ -19,6 +19,7 @@ export const SettingSwitch: React.FC<SettingSwitchProps> = ({
       <Switch
         checked={viewState.switcher.checked}
         onCheckedChange={onCheckedChange}
+        disabled={viewState.switcher.disabled}
       />
     </div>
   );

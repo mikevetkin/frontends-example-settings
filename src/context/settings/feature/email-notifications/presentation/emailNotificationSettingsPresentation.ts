@@ -7,6 +7,8 @@ import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import _ from 'lodash';
+import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
+import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
 
 export const emailNotificationSettingsPresentation = (
   state: EmailNotificationSettingsState
@@ -21,24 +23,19 @@ export const emailNotificationSettingsPresentation = (
 
       break;
     case 'idle':
-      settings = [
-        new SettingSwitchViewState({
-          key: EmailSettingsKey.MarketingEmails,
-          title: 'Marketing emails',
-          description: 'Receive emails about new products, features, and more.',
-          switcher: new SwitcherViewState({
-            checked: draftSettings[EmailSettingsKey.MarketingEmails],
-          }),
-        }),
-        new SettingSwitchViewState({
-          key: EmailSettingsKey.SecurityEmails,
-          title: 'Security emails',
-          description: 'Receive emails about your account security.',
-          switcher: new SwitcherViewState({
-            checked: draftSettings[EmailSettingsKey.SecurityEmails],
-          }),
-        }),
-      ];
+    case 'pending':
+      settings = Object.keys(originalSettings).map(
+        (key) =>
+          new SettingSwitchViewState({
+            key: key as EmailSettingsKey,
+            title: mapEmailSettingsTitle[key as EmailSettingsKey],
+            description: mapEmailSettingsDescription[key as EmailSettingsKey],
+            switcher: new SwitcherViewState({
+              checked: draftSettings[key as EmailSettingsKey],
+              disabled: status === 'pending',
+            }),
+          })
+      );
       break;
   }
 
