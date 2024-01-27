@@ -5,6 +5,7 @@ export class SettingSwitchViewState {
   key: EmailSettingsKey;
   title: string;
   description: string;
+  // TODO: Абстрактный контрол
   switcher: SwitcherViewState;
 
   constructor({ key, title, description, switcher }: SettingSwitchViewState) {
