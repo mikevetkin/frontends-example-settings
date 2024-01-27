@@ -6,7 +6,12 @@ export const SettingsPage: React.FC = () => {
     <div className="w-full space-y-6">
       <h1 className="mb-4 text-left text-4xl font-medium">Settings</h1>
       <LazyToDoSection />
-      <EmailNotificationSettings />
+      <section>
+        <h3 className="mb-4 text-left text-lg font-medium">
+          Email Notifications
+        </h3>
+        <EmailNotificationSettings />
+      </section>
       <LazyToDoSection />
     </div>
   );
