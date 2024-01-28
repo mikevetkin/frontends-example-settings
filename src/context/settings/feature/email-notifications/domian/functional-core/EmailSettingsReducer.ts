@@ -1,13 +1,13 @@
-import { EmailNotificationSettingsState } from './EmailNotificationSettingsState';
+import { EmailNotificationSettingsState } from './EmailSettingsState';
 import {
-  EmailNotificationSettingsEvent,
+  EmailSettingsEvent,
   ReceiveEmailSettingsEvent,
   ToggleEmailSettingsEvent,
-} from './EmailNotificationSettingsEvent';
+} from './EmailSettingsEvent';
 
-export const emailNotificationSettingsReducer = (
+export const emailSettingsReducer = (
   state: EmailNotificationSettingsState,
-  event: EmailNotificationSettingsEvent
+  event: EmailSettingsEvent
 ) => {
   switch (event.type) {
     case 'SaveEvent':

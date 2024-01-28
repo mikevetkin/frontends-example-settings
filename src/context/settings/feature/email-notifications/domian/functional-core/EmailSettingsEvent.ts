@@ -19,7 +19,7 @@ export interface ReceiveEmailSettingsEvent {
   data: EmailSettings;
 }
 
-export type EmailNotificationSettingsEvent =
+export type EmailSettingsEvent =
   | ToggleEmailSettingsEvent
   | SaveEvent
   | DiscardEvent

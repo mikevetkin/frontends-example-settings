@@ -1,12 +1,12 @@
 import { emailSettings } from '../entity/EmailSettings';
 import { EmailSettingsKey } from '../entity/EmailSettingsKey';
-import { emailNotificationSettingsReducer } from './EmailNotificationSettingsReducer';
-import { emailNotificationSettingsState } from './EmailNotificationSettingsState';
+import { emailSettingsReducer } from './EmailSettingsReducer';
+import { emailNotificationSettingsState } from './EmailSettingsState';
 
-describe('EmailNotificationSettingsReducer (Способы использования настроек уведомлений)', () => {
+describe('Способы использования настроек уведомлений', () => {
   describe('ToggleEmailSettingsEvent (Переключатель настроек)', () => {
     test('Включает маркетинговые уведомления', () => {
-      const state = emailNotificationSettingsReducer(
+      const state = emailSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailSettings({
             marketingEmails: false,
@@ -22,7 +22,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
     });
 
     test('Отключает маркетинговые уведомления', () => {
-      const state = emailNotificationSettingsReducer(
+      const state = emailSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailSettings({
             marketingEmails: true,
@@ -38,7 +38,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
     });
 
     test('Включает уведомления безопасности', () => {
-      const state = emailNotificationSettingsReducer(
+      const state = emailSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailSettings({
             securityEmails: false,
@@ -54,7 +54,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
     });
 
     test('Отключает уведомления безопасности', () => {
-      const state = emailNotificationSettingsReducer(
+      const state = emailSettingsReducer(
         emailNotificationSettingsState({
           draftSettings: emailSettings({
             securityEmails: false,
@@ -71,7 +71,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
   });
 
   describe('DiscardEvent (Сброс изменений в настройках)', () => {
-    const state = emailNotificationSettingsReducer(
+    const state = emailSettingsReducer(
       emailNotificationSettingsState({
         draftSettings: emailSettings({
           securityEmails: true,
@@ -89,7 +89,7 @@ describe('EmailNotificationSettingsReducer (Способы использова�
   });
 
   describe('SaveEvent (Сохранение текущих настроек)', () => {
-    const state = emailNotificationSettingsReducer(
+    const state = emailSettingsReducer(
       emailNotificationSettingsState({
         draftSettings: emailSettings({
           securityEmails: true,

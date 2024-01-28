@@ -1,6 +1,6 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import { emailSettings } from '../domian/entity/EmailSettings';
-import { emailNotificationSettingsState } from '../domian/functional-core/EmailNotificationSettingsState';
+import { emailNotificationSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { emailNotificationSettingsPresentation } from './emailNotificationSettingsPresentation';
 import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
