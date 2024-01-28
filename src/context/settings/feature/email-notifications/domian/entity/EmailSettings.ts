@@ -9,5 +9,6 @@ export const emailSettings = (
 ): EmailSettings => ({
   marketingEmails: false,
   securityEmails: false,
+  newFeatureEmails: false,
   ...data,
 });
