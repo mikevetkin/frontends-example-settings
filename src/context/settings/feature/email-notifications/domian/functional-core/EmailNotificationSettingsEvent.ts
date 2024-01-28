@@ -1,4 +1,4 @@
-import { EmailNotificationSettings } from '../entity/EmailNotificationSettings';
+import { EmailSettings } from '../entity/EmailSettings';
 import { EmailSettingsKey } from '../entity/EmailSettingsKey';
 
 export interface ToggleEmailSettingsEvent {
@@ -16,7 +16,7 @@ export interface DiscardEvent {
 
 export interface ReceiveEmailSettingsEvent {
   type: 'ReceiveEmailSettingsEvent';
-  data: EmailNotificationSettings;
+  data: EmailSettings;
 }
 
 export type EmailNotificationSettingsEvent =

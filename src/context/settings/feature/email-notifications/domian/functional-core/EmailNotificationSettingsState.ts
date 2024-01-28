@@ -1,19 +1,16 @@
-import {
-  EmailNotificationSettings,
-  emailNotificationSettings,
-} from '../entity/EmailNotificationSettings';
+import { EmailSettings, emailSettings } from '../entity/EmailSettings';
 
 export interface EmailNotificationSettingsState {
   status: 'loading' | 'idle' | 'pending';
-  originalSettings: EmailNotificationSettings;
-  draftSettings: EmailNotificationSettings;
+  originalSettings: EmailSettings;
+  draftSettings: EmailSettings;
 }
 
 export const emailNotificationSettingsState = (
   data: Partial<EmailNotificationSettingsState> = {}
 ): EmailNotificationSettingsState => ({
   status: 'loading',
-  originalSettings: emailNotificationSettings(),
-  draftSettings: emailNotificationSettings(),
+  originalSettings: emailSettings(),
+  draftSettings: emailSettings(),
   ...data,
 });

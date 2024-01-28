@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { emailNotificationSettingsState } from '../../domian/functional-core/EmailNotificationSettingsState';
 import { emailNotificationSettingsReducer } from '../../domian/functional-core/EmailNotificationSettingsReducer';
-import { emailNotificationSettings } from '../../domian/entity/EmailNotificationSettings';
+import { emailSettings } from '../../domian/entity/EmailSettings';
 import { emailNotificationSettingsPresentation } from '../../presentation/emailNotificationSettingsPresentation';
 
 export const useEmailNotificationSettings = () => {
@@ -17,7 +17,7 @@ export const useEmailNotificationSettings = () => {
     setTimeout(() => {
       dispatch({
         type: 'ReceiveEmailSettingsEvent',
-        data: emailNotificationSettings({
+        data: emailSettings({
           marketingEmails: false,
           securityEmails: true,
         }),

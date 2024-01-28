@@ -1,5 +1,5 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { emailNotificationSettings } from '../domian/entity/EmailNotificationSettings';
+import { emailSettings } from '../domian/entity/EmailSettings';
 import { emailNotificationSettingsState } from '../domian/functional-core/EmailNotificationSettingsState';
 import { emailNotificationSettingsPresentation } from './emailNotificationSettingsPresentation';
 import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
@@ -10,8 +10,8 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     const viewState = emailNotificationSettingsPresentation(
       emailNotificationSettingsState({
         status: 'loading',
-        originalSettings: emailNotificationSettings(),
-        draftSettings: emailNotificationSettings(),
+        originalSettings: emailSettings(),
+        draftSettings: emailSettings(),
       })
     );
 
@@ -30,8 +30,8 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     const viewState = emailNotificationSettingsPresentation(
       emailNotificationSettingsState({
         status: 'idle',
-        originalSettings: emailNotificationSettings(),
-        draftSettings: emailNotificationSettings(),
+        originalSettings: emailSettings(),
+        draftSettings: emailSettings(),
       })
     );
 
@@ -46,8 +46,8 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     const viewState = emailNotificationSettingsPresentation(
       emailNotificationSettingsState({
         status: 'pending',
-        originalSettings: emailNotificationSettings(),
-        draftSettings: emailNotificationSettings(),
+        originalSettings: emailSettings(),
+        draftSettings: emailSettings(),
       })
     );
 
@@ -66,8 +66,8 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     test('Если пользователь не вносил изменения, кнопки скрыты', () => {
       const viewState = emailNotificationSettingsPresentation(
         emailNotificationSettingsState({
-          originalSettings: emailNotificationSettings(),
-          draftSettings: emailNotificationSettings(),
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings(),
         })
       );
 
@@ -77,10 +77,10 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     test('При внесении пользователем изменений кнопки показываются', () => {
       const viewState = emailNotificationSettingsPresentation(
         emailNotificationSettingsState({
-          originalSettings: emailNotificationSettings({
+          originalSettings: emailSettings({
             marketingEmails: true,
           }),
-          draftSettings: emailNotificationSettings({
+          draftSettings: emailSettings({
             marketingEmails: false,
           }),
         })
