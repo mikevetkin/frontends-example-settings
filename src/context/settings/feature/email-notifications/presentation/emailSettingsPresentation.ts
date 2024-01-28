@@ -13,42 +13,51 @@ import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDe
 export const emailSettingsPresentation = (
   state: EmailSettingsState
 ): EmailSettingsViewState => {
+  return {
+    settings: getSetting(state),
+    saveOrDiscard: getSaveOrDiscard(state),
+  };
+};
+
+function getSetting(
+  state: EmailSettingsState
+): SettingViewState[] | SkeletonViewState[] {
   const { status, draftSettings, originalSettings } = state;
 
   switch (status) {
     case 'loading':
-      return {
-        settings: [new SkeletonViewState(), new SkeletonViewState()],
-        saveOrDiscard: undefined,
-      };
+      return [new SkeletonViewState(), new SkeletonViewState()];
     case 'idle':
     case 'pending':
-      return {
-        settings: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
-          (key) =>
-            new SettingViewState({
-              key: key,
-              title: mapEmailSettingsTitle[key],
-              description: mapEmailSettingsDescription[key],
-              control: new SwitcherViewState({
-                checked: draftSettings[key],
-                disabled: status === 'pending',
-              }),
-            })
-        ),
-        saveOrDiscard: _.isEqual(draftSettings, originalSettings)
-          ? undefined
-          : new SaveOrDiscardViewState({
-              save: new ButtonViewState({
-                icon: status === 'pending' ? 'pending' : undefined,
-                label: status === 'pending' ? 'Pending' : 'Save',
-                disabled: status === 'pending',
-              }),
-              discard: new ButtonViewState({
-                label: 'Discard',
-                disabled: status === 'pending',
-              }),
+      return (Object.keys(originalSettings) as EmailSettingsKey[]).map(
+        (key) =>
+          new SettingViewState({
+            key: key,
+            title: mapEmailSettingsTitle[key],
+            description: mapEmailSettingsDescription[key],
+            control: new SwitcherViewState({
+              checked: draftSettings[key],
+              disabled: status === 'pending',
             }),
-      };
+          })
+      );
   }
-};
+}
+
+function getSaveOrDiscard(
+  state: EmailSettingsState
+): SaveOrDiscardViewState | undefined {
+  return _.isEqual(state.draftSettings, state.originalSettings)
+    ? undefined
+    : new SaveOrDiscardViewState({
+        save: new ButtonViewState({
+          icon: state.status === 'pending' ? 'pending' : undefined,
+          label: state.status === 'pending' ? 'Pending' : 'Save',
+          disabled: state.status === 'pending',
+        }),
+        discard: new ButtonViewState({
+          label: 'Discard',
+          disabled: state.status === 'pending',
+        }),
+      });
+}
