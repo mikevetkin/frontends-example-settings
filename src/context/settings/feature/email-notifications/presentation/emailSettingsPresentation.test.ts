@@ -77,6 +77,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     test('При внесении пользователем изменений кнопки показываются', () => {
       const viewState = emailSettingsPresentation(
         emailSettingsState({
+          status: 'idle',
           originalSettings: emailSettings({
             marketingEmails: true,
           }),

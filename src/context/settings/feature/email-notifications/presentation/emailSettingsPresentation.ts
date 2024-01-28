@@ -15,45 +15,40 @@ export const emailSettingsPresentation = (
 ): EmailNotificationSettingsViewState => {
   const { status, draftSettings, originalSettings } = state;
 
-  let settings;
-
   switch (status) {
     case 'loading':
-      settings = [new SkeletonViewState(), new SkeletonViewState()];
-      break;
+      return {
+        settings: [new SkeletonViewState(), new SkeletonViewState()],
+        saveOrDiscard: undefined,
+      };
     case 'idle':
     case 'pending':
-      settings = (Object.keys(originalSettings) as EmailSettingsKey[]).map(
-        (key) =>
-          new SettingSwitchViewState({
-            key: key,
-            title: mapEmailSettingsTitle[key],
-            description: mapEmailSettingsDescription[key],
-            switcher: new SwitcherViewState({
-              checked: draftSettings[key],
-              disabled: status === 'pending',
+      return {
+        settings: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
+          (key) =>
+            new SettingSwitchViewState({
+              key: key,
+              title: mapEmailSettingsTitle[key],
+              description: mapEmailSettingsDescription[key],
+              switcher: new SwitcherViewState({
+                checked: draftSettings[key],
+                disabled: status === 'pending',
+              }),
+            })
+        ),
+        saveOrDiscard: _.isEqual(draftSettings, originalSettings)
+          ? undefined
+          : new SaveOrDiscardViewState({
+              save: new ButtonViewState({
+                icon: status === 'pending' ? 'pending' : undefined,
+                label: status === 'pending' ? 'Pending' : 'Save',
+                disabled: status === 'pending',
+              }),
+              discard: new ButtonViewState({
+                label: 'Discard',
+                disabled: status === 'pending',
+              }),
             }),
-          })
-      );
-      break;
+      };
   }
-
-  const saveOrDiscard = _.isEqual(draftSettings, originalSettings)
-    ? undefined
-    : new SaveOrDiscardViewState({
-        save: new ButtonViewState({
-          icon: status === 'pending' ? 'pending' : undefined,
-          label: status === 'pending' ? 'Pending' : 'Save',
-          disabled: status === 'pending',
-        }),
-        discard: new ButtonViewState({
-          label: 'Discard',
-          disabled: status === 'pending',
-        }),
-      });
-
-  return {
-    settings,
-    saveOrDiscard,
-  };
 };
