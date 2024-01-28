@@ -1,6 +1,6 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { EmailNotificationSettingsState } from '../domian/functional-core/EmailSettingsState';
-import { EmailNotificationSettingsViewState } from '../ui/views/EmailNotificationSettingsViewState';
+import { EmailSettingsState } from '../domian/functional-core/EmailSettingsState';
+import { EmailNotificationSettingsViewState } from '../ui/views/EmailSettingsViewState';
 import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
 import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
@@ -10,8 +10,8 @@ import _ from 'lodash';
 import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
 import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
 
-export const emailNotificationSettingsPresentation = (
-  state: EmailNotificationSettingsState
+export const emailSettingsPresentation = (
+  state: EmailSettingsState
 ): EmailNotificationSettingsViewState => {
   const { status, draftSettings, originalSettings } = state;
 

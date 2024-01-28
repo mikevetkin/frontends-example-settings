@@ -1,4 +1,4 @@
-import { EmailNotificationSettingsState } from './EmailSettingsState';
+import { EmailSettingsState } from './EmailSettingsState';
 import {
   EmailSettingsEvent,
   ReceiveEmailSettingsEvent,
@@ -6,7 +6,7 @@ import {
 } from './EmailSettingsEvent';
 
 export const emailSettingsReducer = (
-  state: EmailNotificationSettingsState,
+  state: EmailSettingsState,
   event: EmailSettingsEvent
 ) => {
   switch (event.type) {
@@ -22,9 +22,9 @@ export const emailSettingsReducer = (
 };
 
 function toggleEmailSetting(
-  state: EmailNotificationSettingsState,
+  state: EmailSettingsState,
   event: ToggleEmailSettingsEvent
-): EmailNotificationSettingsState {
+): EmailSettingsState {
   return {
     ...state,
     draftSettings: {
@@ -34,18 +34,14 @@ function toggleEmailSetting(
   };
 }
 
-function saveEvent(
-  state: EmailNotificationSettingsState
-): EmailNotificationSettingsState {
+function saveEvent(state: EmailSettingsState): EmailSettingsState {
   return {
     ...state,
     originalSettings: state.draftSettings,
   };
 }
 
-function discardEvent(
-  state: EmailNotificationSettingsState
-): EmailNotificationSettingsState {
+function discardEvent(state: EmailSettingsState): EmailSettingsState {
   return {
     ...state,
     draftSettings: state.originalSettings,
@@ -53,9 +49,9 @@ function discardEvent(
 }
 
 function receiveEmailSettings(
-  state: EmailNotificationSettingsState,
+  state: EmailSettingsState,
   event: ReceiveEmailSettingsEvent
-): EmailNotificationSettingsState {
+): EmailSettingsState {
   return {
     ...state,
     status: 'idle',

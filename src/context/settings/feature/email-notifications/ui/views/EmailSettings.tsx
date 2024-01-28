@@ -2,12 +2,12 @@ import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui
 import { SettingSwitch } from '../components/SettingSwitch';
 import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useEmailNotificationSettings } from '../store/useEmailNotificationSettings';
+import { useEmailSettings } from '../store/useEmailSettings';
 
 // Это должно быть компонентом, куда запихиваешь любую модельку настройки с title и списком настроек и она рисуется
 
 export const EmailNotificationSettings = () => {
-  const { viewState, dispatch } = useEmailNotificationSettings();
+  const { viewState, dispatch } = useEmailSettings();
 
   return (
     <div className="flex flex-col gap-4">

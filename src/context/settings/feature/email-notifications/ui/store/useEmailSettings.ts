@@ -1,13 +1,13 @@
 import { useEffect, useReducer } from 'react';
-import { emailNotificationSettingsState } from '../../domian/functional-core/EmailSettingsState';
+import { emailSettingsState } from '../../domian/functional-core/EmailSettingsState';
 import { emailSettingsReducer } from '../../domian/functional-core/EmailSettingsReducer';
 import { emailSettings } from '../../domian/entity/EmailSettings';
-import { emailNotificationSettingsPresentation } from '../../presentation/emailNotificationSettingsPresentation';
+import { emailSettingsPresentation } from '../../presentation/emailSettingsPresentation';
 
-export const useEmailNotificationSettings = () => {
+export const useEmailSettings = () => {
   const [state, dispatch] = useReducer(
     emailSettingsReducer,
-    emailNotificationSettingsState()
+    emailSettingsState()
   );
 
   /**
@@ -26,7 +26,7 @@ export const useEmailNotificationSettings = () => {
   }, []);
 
   return {
-    viewState: emailNotificationSettingsPresentation(state),
+    viewState: emailSettingsPresentation(state),
     dispatch,
   };
 };
