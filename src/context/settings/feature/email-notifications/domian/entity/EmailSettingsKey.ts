@@ -3,5 +3,3 @@ export enum EmailSettingsKey {
   SecurityEmails = 'securityEmails',
   NewFeatureEmails = 'newFeatureEmails',
 }
-
-// Тут можно сгенерить из этого список
