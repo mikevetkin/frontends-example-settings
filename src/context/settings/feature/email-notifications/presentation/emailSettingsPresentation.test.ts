@@ -2,7 +2,7 @@ import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import { emailSettings } from '../domian/entity/EmailSettings';
 import { emailSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { emailSettingsPresentation } from './emailSettingsPresentation';
-import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
+import { SettingViewState } from '../ui/components/SettingViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 
 describe('emailNotificationSettingsPresentation (Презентейшн настроек уведомлений по почте)', () => {
@@ -37,7 +37,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
 
     test('Пользователь видит список настроек', () => {
       viewState.settings.map((setting) =>
-        expect(setting).toBeInstanceOf(SettingSwitchViewState)
+        expect(setting).toBeInstanceOf(SettingViewState)
       );
     });
   });
@@ -53,9 +53,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
 
     test('Управление настройками заблокировано', () => {
       viewState.settings.forEach((setting) =>
-        expect(
-          (setting as SettingSwitchViewState).switcher.disabled
-        ).toBeTruthy()
+        expect((setting as SettingViewState).control.disabled).toBeTruthy()
       );
     });
 

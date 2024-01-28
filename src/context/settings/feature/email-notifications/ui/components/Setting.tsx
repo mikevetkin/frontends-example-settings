@@ -1,12 +1,12 @@
 import { Switch } from '@/components/ui/switch';
-import { SettingSwitchViewState } from './SettingSwitchViewState';
+import { SettingViewState } from './SettingViewState';
 
-export interface SettingSwitchProps {
-  viewState: SettingSwitchViewState;
+export interface SettingProps {
+  viewState: SettingViewState;
   onCheckedChange: () => void;
 }
 
-export const SettingSwitch: React.FC<SettingSwitchProps> = ({
+export const Setting: React.FC<SettingProps> = ({
   viewState,
   onCheckedChange,
 }) => {
@@ -17,9 +17,9 @@ export const SettingSwitch: React.FC<SettingSwitchProps> = ({
         <div>{viewState.description}</div>
       </div>
       <Switch
-        checked={viewState.switcher.checked}
+        checked={viewState.control.checked}
         onCheckedChange={onCheckedChange}
-        disabled={viewState.switcher.disabled}
+        disabled={viewState.control.disabled}
       />
     </div>
   );

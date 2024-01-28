@@ -1,7 +1,7 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import { EmailSettingsState } from '../domian/functional-core/EmailSettingsState';
-import { EmailNotificationSettingsViewState } from '../ui/views/EmailSettingsViewState';
-import { SettingSwitchViewState } from '../ui/components/SettingSwitchViewState';
+import { EmailSettingsViewState } from '../ui/views/EmailSettingsViewState';
+import { SettingViewState } from '../ui/components/SettingViewState';
 import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
@@ -12,7 +12,7 @@ import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDe
 
 export const emailSettingsPresentation = (
   state: EmailSettingsState
-): EmailNotificationSettingsViewState => {
+): EmailSettingsViewState => {
   const { status, draftSettings, originalSettings } = state;
 
   switch (status) {
@@ -26,11 +26,11 @@ export const emailSettingsPresentation = (
       return {
         settings: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
           (key) =>
-            new SettingSwitchViewState({
+            new SettingViewState({
               key: key,
               title: mapEmailSettingsTitle[key],
               description: mapEmailSettingsDescription[key],
-              switcher: new SwitcherViewState({
+              control: new SwitcherViewState({
                 checked: draftSettings[key],
                 disabled: status === 'pending',
               }),

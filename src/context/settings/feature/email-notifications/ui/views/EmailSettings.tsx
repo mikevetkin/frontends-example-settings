@@ -1,6 +1,6 @@
 import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
-import { SettingSwitch } from '../components/SettingSwitch';
-import { SettingSwitchViewState } from '../components/SettingSwitchViewState';
+import { Setting } from '../components/Setting';
+import { SettingViewState } from '../components/SettingViewState';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useEmailSettings } from '../store/useEmailSettings';
 
@@ -12,8 +12,8 @@ export const EmailNotificationSettings = () => {
   return (
     <div className="flex flex-col gap-4">
       {viewState.settings.map((setting) =>
-        setting instanceof SettingSwitchViewState ? (
-          <SettingSwitch
+        setting instanceof SettingViewState ? (
+          <Setting
             viewState={setting}
             onCheckedChange={() =>
               dispatch({
