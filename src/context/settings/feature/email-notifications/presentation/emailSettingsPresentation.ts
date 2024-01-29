@@ -22,7 +22,7 @@ export const emailSettingsPresentation = (
 function getSetting(
   state: EmailSettingsState
 ): SettingViewState[] | SkeletonViewState[] {
-  const { status, draftSettings, originalSettings } = state;
+  const { status, originalSettings } = state;
 
   switch (status) {
     case 'loading':
@@ -35,10 +35,7 @@ function getSetting(
             key: key,
             title: mapEmailSettingsTitle[key],
             description: mapEmailSettingsDescription[key],
-            control: new SwitcherViewState({
-              checked: draftSettings[key],
-              disabled: status === 'pending',
-            }),
+            control: mapControl(state, key),
           })
       );
   }
@@ -60,4 +57,16 @@ function getSaveOrDiscard(
           disabled: state.status === 'pending',
         }),
       });
+}
+
+function mapControl(
+  state: EmailSettingsState,
+  key: EmailSettingsKey
+): SwitcherViewState {
+  const { status, draftSettings } = state;
+
+  return new SwitcherViewState({
+    checked: draftSettings[key],
+    disabled: status === 'pending',
+  });
 }

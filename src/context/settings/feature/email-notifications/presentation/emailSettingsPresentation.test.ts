@@ -54,6 +54,23 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
         );
       });
     });
+
+    describe('Настройки', () => {
+      // const viewState = emailSettingsPresentation(
+      //   emailSettingsState({
+      //     status: 'idle',
+      //     originalSettings: emailSettings(),
+      //     draftSettings: emailSettings(),
+      //   })
+      // );
+
+      describe('Маркетинговые письма', () => {
+        // test('Пользователь видит свитчер', () => {
+        //   const marketingViewStateSetting = viewState.settings.find((setting) => setting.key === EmailSettingsKey.MarketingEmails)
+        //   expect(viewState.settings).toEqual();
+        // });
+      });
+    });
   });
 
   describe('Кнопки сохранения и отмены', () => {
