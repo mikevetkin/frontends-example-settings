@@ -3,7 +3,7 @@ import { EmailSettingsKey } from './EmailSettingsKey';
 // Скорее всего там что-то типа { key: string, type: boolean }
 // На основе которого делается контролы либо булевые, либо строковые
 export interface EmailSettings {
-  [EmailSettingsKey.YourEmail]: boolean;
+  [EmailSettingsKey.YourEmail]: string;
   [EmailSettingsKey.MarketingEmails]: boolean;
   [EmailSettingsKey.SecurityEmails]: boolean;
   [EmailSettingsKey.NewFeatureEmails]: boolean;
@@ -12,7 +12,7 @@ export interface EmailSettings {
 export const emailSettings = (
   data: Partial<EmailSettings> = {}
 ): EmailSettings => ({
-  yourEmail: false,
+  yourEmail: '',
   marketingEmails: false,
   securityEmails: false,
   newFeatureEmails: false,

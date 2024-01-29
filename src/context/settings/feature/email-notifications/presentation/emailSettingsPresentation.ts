@@ -11,6 +11,7 @@ import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
 import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
 import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
+import { InputViewState } from '@/core/view-state/InputViewState';
 
 export const emailSettingsPresentation = (
   state: EmailSettingsState
@@ -68,11 +69,20 @@ function getSaveOrDiscard(
 function mapControl(
   state: EmailSettingsState,
   key: EmailSettingsKey
-): SwitcherViewState {
+): SwitcherViewState | InputViewState {
   const { status, draftSettings } = state;
+  const value = draftSettings[key];
 
-  return new SwitcherViewState({
-    checked: draftSettings[key],
-    disabled: status === 'pending',
-  });
+  switch (typeof value) {
+    case 'boolean':
+      return new SwitcherViewState({
+        checked: draftSettings[key] as boolean,
+        disabled: status === 'pending',
+      });
+    case 'string':
+      return new InputViewState({
+        value: draftSettings[key] as string,
+        disabled: status === 'pending',
+      });
+  }
 }

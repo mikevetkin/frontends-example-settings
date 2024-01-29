@@ -19,7 +19,7 @@ export const EmailNotificationSettings = () => {
             {(settings as SettingsSectionViewState).list.map((setting) => (
               <Setting
                 viewState={setting}
-                onCheckedChange={() =>
+                onChange={() =>
                   dispatch({
                     type: 'ToggleEmailSettingsEvent',
                     key: setting.key,

@@ -4,6 +4,10 @@ import { emailSettingsState } from '../domian/functional-core/EmailSettingsState
 import { emailSettingsPresentation } from './emailSettingsPresentation';
 import { SettingViewState } from '../ui/components/SettingViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
+import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
+import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
+import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
+import { InputViewState } from '@/core/view-state/InputViewState';
 
 describe('emailNotificationSettingsPresentation (Презентейшн настроек уведомлений по почте)', () => {
   describe('Настройки', () => {
@@ -56,19 +60,48 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
     });
 
     describe('Настройки', () => {
-      // const viewState = emailSettingsPresentation(
-      //   emailSettingsState({
-      //     status: 'idle',
-      //     originalSettings: emailSettings(),
-      //     draftSettings: emailSettings(),
-      //   })
-      // );
+      const viewState = emailSettingsPresentation(
+        emailSettingsState({
+          status: 'idle',
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings(),
+        })
+      );
 
       describe('Маркетинговые письма', () => {
-        // test('Пользователь видит свитчер', () => {
-        //   const marketingViewStateSetting = viewState.settings.find((setting) => setting.key === EmailSettingsKey.MarketingEmails)
-        //   expect(viewState.settings).toEqual();
-        // });
+        test('Управляются свитчером', () => {
+          const marketingViewState = (
+            viewState.settings as SettingsSectionViewState
+          ).list.find(
+            (setting) => setting.key === EmailSettingsKey.MarketingEmails
+          ) as SettingViewState;
+
+          expect(marketingViewState.control).toBeInstanceOf(SwitcherViewState);
+        });
+      });
+
+      describe('Письма безопасности', () => {
+        test('Управляются свитчером', () => {
+          const marketingViewState = (
+            viewState.settings as SettingsSectionViewState
+          ).list.find(
+            (setting) => setting.key === EmailSettingsKey.SecurityEmails
+          ) as SettingViewState;
+
+          expect(marketingViewState.control).toBeInstanceOf(SwitcherViewState);
+        });
+      });
+
+      describe('Основной email', () => {
+        test('Управляется инпутом', () => {
+          const marketingViewState = (
+            viewState.settings as SettingsSectionViewState
+          ).list.find(
+            (setting) => setting.key === EmailSettingsKey.YourEmail
+          ) as SettingViewState;
+
+          expect(marketingViewState.control).toBeInstanceOf(InputViewState);
+        });
       });
     });
   });

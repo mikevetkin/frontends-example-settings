@@ -1,11 +1,12 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { EmailSettingsKey } from '../../domian/entity/EmailSettingsKey';
+import { InputViewState } from '@/core/view-state/InputViewState';
 
 export class SettingViewState {
   key: EmailSettingsKey;
   title: string;
   description: string;
-  control: SwitcherViewState;
+  control: SwitcherViewState | InputViewState;
 
   constructor({
     key,
