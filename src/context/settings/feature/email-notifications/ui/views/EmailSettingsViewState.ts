@@ -1,9 +1,9 @@
-import { SettingViewState } from '../components/SettingViewState';
 import { SaveOrDiscardViewState } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscardViewState';
-import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
+import { SettingsSectionViewState } from '../components/SettingsSectionViewState';
+import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 
 export class EmailSettingsViewState {
-  settings: SettingViewState[] | SkeletonViewState[];
+  settings: SettingsSectionViewState | SkeletonListViewState;
   saveOrDiscard: SaveOrDiscardViewState | undefined;
 
   constructor({ settings, saveOrDiscard }: EmailSettingsViewState) {

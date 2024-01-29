@@ -9,6 +9,8 @@ import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import _ from 'lodash';
 import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
 import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
+import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
+import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 
 export const emailSettingsPresentation = (
   state: EmailSettingsState
@@ -21,23 +23,27 @@ export const emailSettingsPresentation = (
 
 function getSetting(
   state: EmailSettingsState
-): SettingViewState[] | SkeletonViewState[] {
+): SettingsSectionViewState | SkeletonListViewState {
   const { status, originalSettings } = state;
 
   switch (status) {
     case 'loading':
-      return [new SkeletonViewState(), new SkeletonViewState()];
+      return new SkeletonListViewState({
+        list: [new SkeletonViewState(), new SkeletonViewState()],
+      });
     case 'idle':
     case 'pending':
-      return (Object.keys(originalSettings) as EmailSettingsKey[]).map(
-        (key) =>
-          new SettingViewState({
-            key: key,
-            title: mapEmailSettingsTitle[key],
-            description: mapEmailSettingsDescription[key],
-            control: mapControl(state, key),
-          })
-      );
+      return new SettingsSectionViewState({
+        list: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
+          (key) =>
+            new SettingViewState({
+              key: key,
+              title: mapEmailSettingsTitle[key],
+              description: mapEmailSettingsDescription[key],
+              control: mapControl(state, key),
+            })
+        ),
+      });
   }
 }
 

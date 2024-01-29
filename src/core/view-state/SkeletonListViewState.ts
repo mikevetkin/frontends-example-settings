@@ -1,3 +1,9 @@
 import { SkeletonViewState } from './SkeletonViewState';
 
-export type SkeletonListViewState = SkeletonViewState[];
+export class SkeletonListViewState {
+  list: SkeletonViewState[];
+
+  constructor({ list }: SkeletonListViewState) {
+    this.list = list;
+  }
+}

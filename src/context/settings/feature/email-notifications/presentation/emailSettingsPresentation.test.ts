@@ -17,7 +17,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
       );
 
       test('Пользователь видит скелетон', () => {
-        viewState.settings.map((setting) =>
+        viewState.settings.list.map((setting) =>
           expect(setting).toBeInstanceOf(SkeletonViewState)
         );
       });
@@ -33,7 +33,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
       );
 
       test('Пользователь видит список настроек', () => {
-        viewState.settings.map((setting) =>
+        viewState.settings.list.map((setting) =>
           expect(setting).toBeInstanceOf(SettingViewState)
         );
       });
@@ -49,7 +49,7 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
       );
 
       test('Управление настройками заблокировано', () => {
-        viewState.settings.forEach((setting) =>
+        viewState.settings.list.forEach((setting) =>
           expect((setting as SettingViewState).control.disabled).toBeTruthy()
         );
       });
