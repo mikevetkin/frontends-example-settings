@@ -6,58 +6,54 @@ import { SettingViewState } from '../ui/components/SettingViewState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 
 describe('emailNotificationSettingsPresentation (Презентейшн настроек уведомлений по почте)', () => {
-  describe('Если данные загружаются', () => {
-    const viewState = emailSettingsPresentation(
-      emailSettingsState({
-        status: 'loading',
-        originalSettings: emailSettings(),
-        draftSettings: emailSettings(),
-      })
-    );
-
-    test('Пользователь видит скелетон', () => {
-      viewState.settings.map((setting) =>
-        expect(setting).toBeInstanceOf(SkeletonViewState)
+  describe('Настройки', () => {
+    describe('Если данные загружаются', () => {
+      const viewState = emailSettingsPresentation(
+        emailSettingsState({
+          status: 'loading',
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings(),
+        })
       );
+
+      test('Пользователь видит скелетон', () => {
+        viewState.settings.map((setting) =>
+          expect(setting).toBeInstanceOf(SkeletonViewState)
+        );
+      });
     });
 
-    test('Кнопки сохранения и отмены скрыты', () => {
-      expect(viewState.saveOrDiscard).toBeUndefined();
-    });
-  });
-
-  describe('Если данные загружены', () => {
-    const viewState = emailSettingsPresentation(
-      emailSettingsState({
-        status: 'idle',
-        originalSettings: emailSettings(),
-        draftSettings: emailSettings(),
-      })
-    );
-
-    test('Пользователь видит список настроек', () => {
-      viewState.settings.map((setting) =>
-        expect(setting).toBeInstanceOf(SettingViewState)
+    describe('Если данные загружены', () => {
+      const viewState = emailSettingsPresentation(
+        emailSettingsState({
+          status: 'idle',
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings(),
+        })
       );
+
+      test('Пользователь видит список настроек', () => {
+        viewState.settings.map((setting) =>
+          expect(setting).toBeInstanceOf(SettingViewState)
+        );
+      });
     });
-  });
 
-  describe('Если данные отправляются', () => {
-    const viewState = emailSettingsPresentation(
-      emailSettingsState({
-        status: 'pending',
-        originalSettings: emailSettings(),
-        draftSettings: emailSettings(),
-      })
-    );
-
-    test('Управление настройками заблокировано', () => {
-      viewState.settings.forEach((setting) =>
-        expect((setting as SettingViewState).control.disabled).toBeTruthy()
+    describe('Если данные отправляются', () => {
+      const viewState = emailSettingsPresentation(
+        emailSettingsState({
+          status: 'pending',
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings(),
+        })
       );
-    });
 
-    test('На кнопке "Сохранить" индикатор загрузки', () => {});
+      test('Управление настройками заблокировано', () => {
+        viewState.settings.forEach((setting) =>
+          expect((setting as SettingViewState).control.disabled).toBeTruthy()
+        );
+      });
+    });
   });
 
   describe('Кнопки сохранения и отмены', () => {
@@ -86,6 +82,27 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
       );
 
       expect(viewState.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
+    });
+
+    describe('Если данные отправляются', () => {
+      const viewState = emailSettingsPresentation(
+        emailSettingsState({
+          status: 'pending',
+          originalSettings: emailSettings(),
+          draftSettings: emailSettings({
+            securityEmails: true,
+          }),
+        })
+      );
+
+      test('На кнопке "Сохранить" индикатор загрузки', () => {
+        expect(viewState.saveOrDiscard?.save.icon).toBe('pending');
+      });
+
+      test('Кнопки заблокированы', () => {
+        expect(viewState.saveOrDiscard?.save.disabled).toBe(true);
+        expect(viewState.saveOrDiscard?.discard.disabled).toBe(true);
+      });
     });
   });
 });
