@@ -48,24 +48,6 @@ function getSetting(
   }
 }
 
-function getSaveOrDiscard(
-  state: EmailSettingsState
-): SaveOrDiscardViewState | undefined {
-  return _.isEqual(state.draftSettings, state.originalSettings)
-    ? undefined
-    : new SaveOrDiscardViewState({
-        save: new ButtonViewState({
-          icon: state.status === 'pending' ? 'pending' : undefined,
-          label: state.status === 'pending' ? 'Pending' : 'Save',
-          disabled: state.status === 'pending',
-        }),
-        discard: new ButtonViewState({
-          label: 'Discard',
-          disabled: state.status === 'pending',
-        }),
-      });
-}
-
 function mapControl(
   state: EmailSettingsState,
   key: EmailSettingsKey
@@ -85,4 +67,22 @@ function mapControl(
         disabled: status === 'pending',
       });
   }
+}
+
+function getSaveOrDiscard(
+  state: EmailSettingsState
+): SaveOrDiscardViewState | undefined {
+  return _.isEqual(state.draftSettings, state.originalSettings)
+    ? undefined
+    : new SaveOrDiscardViewState({
+        save: new ButtonViewState({
+          icon: state.status === 'pending' ? 'pending' : undefined,
+          label: state.status === 'pending' ? 'Pending' : 'Save',
+          disabled: state.status === 'pending',
+        }),
+        discard: new ButtonViewState({
+          label: 'Discard',
+          disabled: state.status === 'pending',
+        }),
+      });
 }
