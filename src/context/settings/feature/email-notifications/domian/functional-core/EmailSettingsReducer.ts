@@ -2,7 +2,7 @@ import { EmailSettingsState } from './EmailSettingsState';
 import {
   EmailSettingsEvent,
   ReceiveEmailSettingsEvent,
-  ToggleEmailSettingsEvent,
+  ChangeEmailSettingEvent,
 } from './EmailSettingsEvent';
 
 export const emailSettingsReducer = (
@@ -16,20 +16,20 @@ export const emailSettingsReducer = (
       return discardEvent(state);
     case 'ReceiveEmailSettingsEvent':
       return receiveEmailSettings(state, event);
-    case 'ToggleEmailSettingsEvent':
-      return toggleEmailSetting(state, event);
+    case 'ChangeEmailSettingEvent':
+      return changeEmailSetting(state, event);
   }
 };
 
-function toggleEmailSetting(
+function changeEmailSetting(
   state: EmailSettingsState,
-  event: ToggleEmailSettingsEvent
+  event: ChangeEmailSettingEvent
 ): EmailSettingsState {
   return {
     ...state,
     draftSettings: {
       ...state.draftSettings,
-      [event.key]: !state.draftSettings[event.key],
+      [event.key]: event.value,
     },
   };
 }

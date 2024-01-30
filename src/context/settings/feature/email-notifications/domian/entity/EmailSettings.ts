@@ -1,7 +1,5 @@
 import { EmailSettingsKey } from './EmailSettingsKey';
-// Ребята из сириуса сделали в этом месте неплохо. Нужно взять их типы
-// Скорее всего там что-то типа { key: string, type: boolean }
-// На основе которого делается контролы либо булевые, либо строковые
+
 export interface EmailSettings {
   [EmailSettingsKey.YourEmail]: string;
   [EmailSettingsKey.MarketingEmails]: boolean;

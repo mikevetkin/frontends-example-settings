@@ -3,10 +3,11 @@ import { SettingViewState } from './SettingViewState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { Input } from '@/components/ui/input';
+import { EmailSettings } from '../../domian/entity/EmailSettings';
 
 export interface SettingProps {
   viewState: SettingViewState;
-  onChange: () => void;
+  onChange: (value: EmailSettings[keyof EmailSettings]) => void;
 }
 
 export const Setting: React.FC<SettingProps> = ({ viewState, onChange }) => {
@@ -26,7 +27,7 @@ export const Setting: React.FC<SettingProps> = ({ viewState, onChange }) => {
             className="w-40"
             value={(viewState.control as InputViewState).value}
             disabled={viewState.control.disabled}
-            onInput={onChange}
+            onInput={(event) => onChange(event.currentTarget.value)}
           />
         );
     }

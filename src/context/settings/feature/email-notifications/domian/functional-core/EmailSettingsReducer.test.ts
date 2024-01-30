@@ -4,7 +4,7 @@ import { emailSettingsReducer } from './EmailSettingsReducer';
 import { emailSettingsState } from './EmailSettingsState';
 
 describe('Способы использования настроек уведомлений', () => {
-  describe('ToggleEmailSettingsEvent (Переключатель настроек)', () => {
+  describe('ChangeEmailSettingEvent (Изменение настроек)', () => {
     test('Включает маркетинговые уведомления', () => {
       const state = emailSettingsReducer(
         emailSettingsState({
@@ -13,8 +13,9 @@ describe('Способы использования настроек уведо�
           }),
         }),
         {
-          type: 'ToggleEmailSettingsEvent',
+          type: 'ChangeEmailSettingEvent',
           key: EmailSettingsKey.MarketingEmails,
+          value: true,
         }
       );
 
@@ -29,8 +30,9 @@ describe('Способы использования настроек уведо�
           }),
         }),
         {
-          type: 'ToggleEmailSettingsEvent',
+          type: 'ChangeEmailSettingEvent',
           key: EmailSettingsKey.MarketingEmails,
+          value: false,
         }
       );
 
@@ -45,8 +47,9 @@ describe('Способы использования настроек уведо�
           }),
         }),
         {
-          type: 'ToggleEmailSettingsEvent',
+          type: 'ChangeEmailSettingEvent',
           key: EmailSettingsKey.SecurityEmails,
+          value: true,
         }
       );
 
@@ -57,16 +60,34 @@ describe('Способы использования настроек уведо�
       const state = emailSettingsReducer(
         emailSettingsState({
           draftSettings: emailSettings({
-            securityEmails: false,
+            securityEmails: true,
           }),
         }),
         {
-          type: 'ToggleEmailSettingsEvent',
+          type: 'ChangeEmailSettingEvent',
           key: EmailSettingsKey.SecurityEmails,
+          value: false,
         }
       );
 
-      expect(state.draftSettings.securityEmails).toBe(true);
+      expect(state.draftSettings.securityEmails).toBe(false);
+    });
+
+    test('Выставляет email для получения уведомлений', () => {
+      const state = emailSettingsReducer(
+        emailSettingsState({
+          draftSettings: emailSettings({
+            yourEmail: '',
+          }),
+        }),
+        {
+          type: 'ChangeEmailSettingEvent',
+          key: EmailSettingsKey.YourEmail,
+          value: 'test@email.com',
+        }
+      );
+
+      expect(state.draftSettings.yourEmail).toBe('test@email.com');
     });
   });
 

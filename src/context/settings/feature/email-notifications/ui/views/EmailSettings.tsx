@@ -19,10 +19,11 @@ export const EmailNotificationSettings = () => {
             {(settings as SettingsSectionViewState).list.map((setting) => (
               <Setting
                 viewState={setting}
-                onChange={() =>
+                onChange={(value) =>
                   dispatch({
-                    type: 'ToggleEmailSettingsEvent',
+                    type: 'ChangeEmailSettingEvent',
                     key: setting.key,
+                    value,
                   })
                 }
               />
