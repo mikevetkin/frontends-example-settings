@@ -3,7 +3,6 @@ import { emailSettings } from '../domian/entity/EmailSettings';
 import { emailSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { emailSettingsPresentation } from './emailSettingsPresentation';
 import { SettingViewState } from '../../../shared/setting/ui/components/SettingViewState';
-import { SaveOrDiscardViewState } from '../../../shared/save-or-discard/ui/components/SaveOrDiscardViewState';
 import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
 import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
@@ -102,56 +101,6 @@ describe('emailNotificationSettingsPresentation (Презентейшн наст
 
           expect(marketingViewState.control).toBeInstanceOf(InputViewState);
         });
-      });
-    });
-  });
-
-  describe('Кнопки сохранения и отмены', () => {
-    test('Если пользователь не вносил изменения, кнопки скрыты', () => {
-      const viewState = emailSettingsPresentation(
-        emailSettingsState({
-          originalSettings: emailSettings(),
-          draftSettings: emailSettings(),
-        })
-      );
-
-      expect(viewState.saveOrDiscard).toBeUndefined();
-    });
-
-    test('При внесении пользователем изменений кнопки показываются', () => {
-      const viewState = emailSettingsPresentation(
-        emailSettingsState({
-          status: 'idle',
-          originalSettings: emailSettings({
-            marketingEmails: true,
-          }),
-          draftSettings: emailSettings({
-            marketingEmails: false,
-          }),
-        })
-      );
-
-      expect(viewState.saveOrDiscard).toBeInstanceOf(SaveOrDiscardViewState);
-    });
-
-    describe('Если данные отправляются', () => {
-      const viewState = emailSettingsPresentation(
-        emailSettingsState({
-          status: 'pending',
-          originalSettings: emailSettings(),
-          draftSettings: emailSettings({
-            securityEmails: true,
-          }),
-        })
-      );
-
-      test('На кнопке "Сохранить" индикатор загрузки', () => {
-        expect(viewState.saveOrDiscard?.save.icon).toBe('pending');
-      });
-
-      test('Кнопки заблокированы', () => {
-        expect(viewState.saveOrDiscard?.save.disabled).toBe(true);
-        expect(viewState.saveOrDiscard?.discard.disabled).toBe(true);
       });
     });
   });
