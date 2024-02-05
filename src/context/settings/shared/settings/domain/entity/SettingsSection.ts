@@ -1,4 +1,4 @@
-import { emailSettings } from '../../../email-notifications/domian/entity/EmailSettings';
+import { emailSettings } from '../../../../feature/email-notifications/domian/entity/EmailSettings';
 import { AllSettings } from './AllSettings';
 
 export interface SettingsSection {
