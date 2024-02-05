@@ -39,6 +39,7 @@ function getSetting(
               key: key,
               title: mapEmailSettingsTitle[key],
               description: mapEmailSettingsDescription[key],
+              // FIXME: Ну и вот доказательства
               control: settingControlPresentation(state, key),
             })
         ),
