@@ -1,5 +1,5 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { EmailSettingsKey } from '../../domian/entity/EmailSettingsKey';
+import { EmailSettingsKey } from '../../../../feature/email-notifications/domian/entity/EmailSettingsKey';
 import { InputViewState } from '@/core/view-state/InputViewState';
 
 export class SettingViewState {

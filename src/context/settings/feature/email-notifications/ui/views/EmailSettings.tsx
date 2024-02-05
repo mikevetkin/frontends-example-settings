@@ -1,5 +1,5 @@
-import { SaveOrDiscard } from '@/context/settings/feature/email-notifications/ui/components/SaveOrDiscard';
-import { Setting } from '../components/Setting';
+import { SaveOrDiscard } from '@/context/settings/shared/save-or-discard/ui/components/SaveOrDiscard';
+import { Setting } from '../../../../shared/setting/ui/components/Setting';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useEmailSettings } from '../store/useEmailSettings';
 import { SettingsSectionViewState } from '../components/SettingsSectionViewState';

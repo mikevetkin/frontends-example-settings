@@ -1,24 +1,22 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import { EmailSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { EmailSettingsViewState } from '../ui/views/EmailSettingsViewState';
-import { SettingViewState } from '../ui/components/SettingViewState';
+import { SettingViewState } from '../../../shared/setting/ui/components/SettingViewState';
 import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
-import { ButtonViewState } from '@/core/view-state/ButtonViewState';
-import _ from 'lodash';
 import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
 import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
 import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { InputViewState } from '@/core/view-state/InputViewState';
+import { saveOrDiscardPresenatation } from '@/context/settings/shared/save-or-discard/presentation/saveOrDiscardPresentation';
 
 export const emailSettingsPresentation = (
   state: EmailSettingsState
 ): EmailSettingsViewState => {
   return {
     settings: getSetting(state),
-    saveOrDiscard: getSaveOrDiscard(state),
+    saveOrDiscard: saveOrDiscardPresenatation(state),
   };
 };
 
@@ -35,6 +33,7 @@ function getSetting(
     case 'idle':
     case 'pending':
       return new SettingsSectionViewState({
+        heading: 'Email Notifications',
         list: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
           (key) =>
             new SettingViewState({
@@ -67,22 +66,4 @@ function mapControl(
         disabled: status === 'pending',
       });
   }
-}
-
-function getSaveOrDiscard(
-  state: EmailSettingsState
-): SaveOrDiscardViewState | undefined {
-  return _.isEqual(state.draftSettings, state.originalSettings)
-    ? undefined
-    : new SaveOrDiscardViewState({
-        save: new ButtonViewState({
-          icon: state.status === 'pending' ? 'pending' : undefined,
-          label: state.status === 'pending' ? 'Pending' : 'Save',
-          disabled: state.status === 'pending',
-        }),
-        discard: new ButtonViewState({
-          label: 'Discard',
-          disabled: state.status === 'pending',
-        }),
-      });
 }
