@@ -1,24 +1,26 @@
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { SettingsState } from '../../settings/domain/functional-core/settingsState';
 import { AllSettingsKey } from '../../settings/domain/entity/AllSettingsKey';
+import { SettingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
+import { EmailSettingsKey } from '@/context/settings/feature/email-notifications/domian/entity/EmailSettingsKey';
+import { PersonalSettingsKey } from '@/context/settings/feature/personal/domain/entity/PersonalSettingsKey';
 
 export function settingControlPresentation(
   state: SettingsState,
-  key: AllSettingsKey
+  key: EmailSettingsKey | PersonalSettingsKey
 ): SwitcherViewState | InputViewState {
-  const { status, draftSettings } = state;
-  const value = draftSettings[key];
+  const { status, draft } = state;
+  const value = draft[key];
 
   switch (typeof value) {
     case 'boolean':
       return new SwitcherViewState({
-        checked: draftSettings[key] as boolean,
+        checked: draft[key] as boolean,
         disabled: status === 'pending',
       });
     case 'string':
       return new InputViewState({
-        value: draftSettings[key] as string,
+        value: draft[key] as string,
         disabled: status === 'pending',
       });
   }
