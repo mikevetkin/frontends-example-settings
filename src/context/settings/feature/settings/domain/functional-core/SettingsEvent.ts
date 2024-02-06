@@ -1,11 +1,12 @@
 import { EmailSettingsKey } from '../../../email-notifications/domian/entity/EmailSettingsKey';
+import { PersonalSettingsKey } from '../../../personal/domain/entity/PersonalSettingsKey';
 import { Settings } from '../entity/Settings';
 import { SettingsSectionKey } from '../entity/SettingsSectionKey';
 
 export interface ChangeSettingEvent {
   type: 'ChangeSettingEvent';
   sectionKey: SettingsSectionKey;
-  key: EmailSettingsKey;
+  key: EmailSettingsKey | PersonalSettingsKey;
   value: boolean | string; // FIXME: Вынести в общее
 }
 

@@ -60,6 +60,6 @@ export const settingPresentation = (
     key: setting,
     title: mapTitle[section],
     description: mapDescription[section],
-    control: settingControlPresentation(state, setting),
+    control: settingControlPresentation(state, section, setting),
   });
 };
