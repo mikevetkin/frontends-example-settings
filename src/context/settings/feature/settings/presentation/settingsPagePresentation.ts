@@ -1,5 +1,5 @@
 import { SettingViewState } from '@/context/settings/shared/setting/ui/components/SettingViewState';
-import { SettingsSectionViewState } from '../../email-notifications/ui/components/SettingsSectionViewState';
+import { SettingsSectionViewState } from '../../../shared/section/ui/components/SettingsSectionViewState';
 import { SettingsSectionKey } from '../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../domain/functional-core/SettingsState';
 import { mapSettingsSectionHeading } from '../domain/mapper/mapSettingsSectionHeading';

@@ -1,4 +1,4 @@
-import { SettingViewState } from '../../../../shared/setting/ui/components/SettingViewState';
+import { SettingViewState } from '../../../setting/ui/components/SettingViewState';
 
 // FIXME: Общая вынести, положить рядом с компонентом
 export class SettingsSectionViewState {

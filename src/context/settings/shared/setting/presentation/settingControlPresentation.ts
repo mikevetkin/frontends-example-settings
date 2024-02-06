@@ -16,12 +16,12 @@ export function settingControlPresentation(
   switch (typeof value) {
     case 'boolean':
       return new SwitcherViewState({
-        checked: draft[sectionKey][key] as boolean,
+        checked: draft[sectionKey][key],
         disabled: status === 'pending',
       });
     case 'string':
       return new InputViewState({
-        value: draft[sectionKey][key] as string,
+        value: draft[sectionKey][key],
         disabled: status === 'pending',
       });
   }

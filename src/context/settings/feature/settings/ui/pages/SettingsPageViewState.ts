@@ -1,4 +1,4 @@
-import { SettingsSectionViewState } from '../../../email-notifications/ui/components/SettingsSectionViewState';
+import { SettingsSectionViewState } from '../../../../shared/section/ui/components/SettingsSectionViewState';
 
 export class SettingsPageViewState {
   sections: SettingsSectionViewState[];
