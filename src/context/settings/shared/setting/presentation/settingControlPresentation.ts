@@ -1,6 +1,5 @@
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { AllSettingsKey } from '../../settings/domain/entity/AllSettingsKey';
 import { SettingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
 import { EmailSettingsKey } from '@/context/settings/feature/email-notifications/domian/entity/EmailSettingsKey';
 import { PersonalSettingsKey } from '@/context/settings/feature/personal/domain/entity/PersonalSettingsKey';
