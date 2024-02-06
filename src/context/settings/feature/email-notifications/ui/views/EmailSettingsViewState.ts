@@ -1,9 +1,9 @@
 import { SaveOrDiscardViewState } from '@/context/settings/shared/save-or-discard/ui/components/SaveOrDiscardViewState';
-import { SettingsSectionViewState } from '../../../../shared/section/ui/components/SettingsSectionViewState';
+import { SectionViewState } from '../../../../shared/section/ui/components/SectionViewState';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 
 export class EmailSettingsViewState {
-  settings: SettingsSectionViewState | SkeletonListViewState;
+  settings: SectionViewState | SkeletonListViewState;
   saveOrDiscard: SaveOrDiscardViewState | undefined;
 
   constructor({ settings, saveOrDiscard }: EmailSettingsViewState) {

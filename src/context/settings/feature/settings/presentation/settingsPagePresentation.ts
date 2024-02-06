@@ -1,5 +1,5 @@
 import { SettingViewState } from '@/context/settings/shared/setting/ui/components/SettingViewState';
-import { SettingsSectionViewState } from '../../../shared/section/ui/components/SettingsSectionViewState';
+import { SectionViewState } from '../../../shared/section/ui/components/SectionViewState';
 import { SettingsSectionKey } from '../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../domain/functional-core/SettingsState';
 import { mapSettingsSectionHeading } from '../domain/mapper/mapSettingsSectionHeading';
@@ -25,8 +25,8 @@ export const settingsPagePresentation = (state: SettingsState) => {
 export const settingsSectionPresentation = (
   state: SettingsState,
   section: SettingsSectionKey
-): SettingsSectionViewState => {
-  return new SettingsSectionViewState({
+): SectionViewState => {
+  return new SectionViewState({
     heading: mapSettingsSectionHeading[section],
     list: (
       Object.keys(state.draft[section]) as

@@ -1,7 +1,7 @@
-import { SettingsSectionViewState } from '../../../../shared/section/ui/components/SettingsSectionViewState';
+import { SectionViewState } from '../../../../shared/section/ui/components/SectionViewState';
 
 export class SettingsPageViewState {
-  sections: SettingsSectionViewState[];
+  sections: SectionViewState[];
 
   constructor({ sections }: SettingsPageViewState) {
     this.sections = sections;

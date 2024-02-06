@@ -5,7 +5,7 @@ import { SettingViewState } from '../../../shared/setting/ui/components/SettingV
 import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
 import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
 import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
-import { SettingsSectionViewState } from '../ui/components/SettingsSectionViewState';
+import { SectionViewState } from '../../../shared/section/ui/components/SectionViewState';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { saveOrDiscardPresenatation } from '@/context/settings/shared/save-or-discard/presentation/saveOrDiscardPresentation';
 import { settingControlPresentation } from '@/context/settings/shared/setting/presentation/settingControlPresentation';
@@ -21,7 +21,7 @@ export const emailSettingsPresentation = (
 
 function getSetting(
   state: EmailSettingsState
-): SettingsSectionViewState | SkeletonListViewState {
+): SectionViewState | SkeletonListViewState {
   const { status, originalSettings } = state;
 
   switch (status) {
@@ -31,7 +31,7 @@ function getSetting(
       });
     case 'idle':
     case 'pending':
-      return new SettingsSectionViewState({
+      return new SectionViewState({
         heading: 'Email Notifications',
         list: (Object.keys(originalSettings) as EmailSettingsKey[]).map(
           (key) =>
