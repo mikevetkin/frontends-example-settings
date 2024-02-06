@@ -1,12 +1,12 @@
-import { EmailSettingsState } from '@/context/settings/feature/email-notifications/domian/functional-core/EmailSettingsState';
+import { SettingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
 import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import _ from 'lodash';
 
 export function saveOrDiscardPresenatation(
-  state: EmailSettingsState // FIXME: Универсальный
+  state: SettingsState
 ): SaveOrDiscardViewState | undefined {
-  return _.isEqual(state.draftSettings, state.originalSettings)
+  return _.isEqual(state.draft, state.original)
     ? undefined
     : new SaveOrDiscardViewState({
         save: new ButtonViewState({
