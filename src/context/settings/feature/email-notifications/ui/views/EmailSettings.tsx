@@ -21,7 +21,7 @@ export const EmailNotificationSettings = () => {
                 viewState={setting}
                 onChange={(value) =>
                   dispatch({
-                    type: 'ChangeEmailSettingEvent',
+                    type: 'ChangeSettingEvent',
                     key: setting.key,
                     value,
                   })

@@ -2,7 +2,7 @@ import { EmailSettings } from '../entity/EmailSettings';
 import { EmailSettingsKey } from '../entity/EmailSettingsKey';
 
 export interface ChangeEmailSettingEvent {
-  type: 'ChangeEmailSettingEvent';
+  type: 'ChangeSettingEvent';
   key: EmailSettingsKey;
   value: boolean | string;
 }
@@ -16,7 +16,7 @@ export interface DiscardEvent {
 }
 
 export interface ReceiveEmailSettingsEvent {
-  type: 'ReceiveEmailSettingsEvent';
+  type: 'ReceiveSettingsEvent';
   data: EmailSettings;
 }
 
