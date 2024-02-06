@@ -6,7 +6,7 @@ import { mapSettingsSectionHeading } from '../../../domain/mapper/mapSettingsSec
 import { settingPresentation } from '../Setting/settingPresentation';
 import { SectionViewState } from './SectionViewState';
 
-export const saveectionPresentation = (
+export const sectionPresentation = (
   state: SettingsState,
   section: SettingsSectionKey
 ): SectionViewState => {

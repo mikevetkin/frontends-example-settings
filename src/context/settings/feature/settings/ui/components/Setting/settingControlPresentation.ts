@@ -27,3 +27,23 @@ export function settingControlPresentation(
       });
   }
 }
+
+// Не такой больный вариант
+// export function settingControlPresentation(
+//   state: SettingsState,
+//   value: SettingsValue
+// ) {
+//   const { status } = state;
+//   switch (typeof value) {
+//     case 'boolean':
+//       return new SwitcherViewState({
+//         checked: value,
+//         disabled: status === 'pending',
+//       });
+//     case 'string':
+//       return new InputViewState({
+//         value: value,
+//         disabled: status === 'pending',
+//       });
+//   }
+// }

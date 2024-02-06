@@ -11,6 +11,8 @@ export interface SettingProps {
   onChange: (value: EmailSettings[keyof EmailSettings]) => void;
 }
 
+// FIXME: Контрол это отдельный компонент
+
 export const Setting: React.FC<SettingProps> = ({ viewState, onChange }) => {
   const renderControl = () => {
     switch (viewState.control.constructor) {
