@@ -1,5 +1,5 @@
-import { LazyToDoSection } from '../components/LazyToDoSection';
-import { EmailNotificationSettings } from '../views/EmailSettings';
+import { LazyToDoSection } from '../../../email-notifications/ui/components/LazyToDoSection';
+import { EmailNotificationSettings } from '../../../email-notifications/ui/views/EmailSettings';
 
 export const SettingsPage: React.FC = () => {
   return (
