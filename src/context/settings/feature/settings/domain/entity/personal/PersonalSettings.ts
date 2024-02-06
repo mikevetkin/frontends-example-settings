@@ -3,6 +3,7 @@ import { PersonalSettingsKey } from './PersonalSettingsKey';
 export interface PersonalSettings {
   [PersonalSettingsKey.FirstName]: string;
   [PersonalSettingsKey.LastName]: string;
+  [PersonalSettingsKey.ShowPersonalInfo]: boolean;
 }
 
 export const personalSettings = (
@@ -10,5 +11,6 @@ export const personalSettings = (
 ): PersonalSettings => ({
   firstName: '',
   lastName: '',
+  showPersonalInfo: false,
   ...data,
 });
