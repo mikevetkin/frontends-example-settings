@@ -1,14 +1,14 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import { EmailSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { EmailSettingsViewState } from '../ui/views/EmailSettingsViewState';
-import { SettingViewState } from '../../../shared/setting/ui/components/SettingViewState';
-import { EmailSettingsKey } from '../domian/entity/EmailSettingsKey';
-import { mapEmailSettingsTitle } from '../domian/mapper/mapEmailSettingsTitle';
-import { mapEmailSettingsDescription } from '../domian/mapper/mapEmailSettingsDescription';
-import { SectionViewState } from '../../../shared/section/ui/components/SectionViewState';
+import { SettingViewState } from '../../settings/ui/components/Setting/SettingViewState';
+import { EmailSettingsKey } from '../../settings/domain/entity/email-notifications/EmailSettingsKey';
+import { mapEmailSettingsTitle } from '../../settings/domain/mapper/email-notifications/mapEmailSettingsTitle';
+import { mapEmailSettingsDescription } from '../../settings/domain/mapper/email-notifications/mapEmailSettingsDescription';
+import { SectionViewState } from '../../settings/ui/components/Section/SectionViewState';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
-import { saveOrDiscardPresenatation } from '@/context/settings/shared/save-or-discard/presentation/saveOrDiscardPresentation';
-import { settingControlPresentation } from '@/context/settings/shared/setting/presentation/settingControlPresentation';
+import { saveOrDiscardPresenatation } from '@/context/settings/feature/settings/ui/components/SaveOrDiscard/saveOrDiscardPresentation';
+import { settingControlPresentation } from '@/context/settings/feature/settings/ui/components/Setting/settingControlPresentation';
 
 // FIXME: Вытащить тесты и засунуть куда нужно
 

@@ -1,8 +1,8 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { EmailSettingsKey } from '../../../../feature/email-notifications/domian/entity/EmailSettingsKey';
+import { EmailSettingsKey } from '../../../domain/entity/email-notifications/EmailSettingsKey';
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { SettingsSectionKey } from '@/context/settings/feature/settings/domain/entity/SettingsSectionKey';
-import { PersonalSettingsKey } from '@/context/settings/feature/personal/domain/entity/PersonalSettingsKey';
+import { PersonalSettingsKey } from '@/context/settings/feature/settings/domain/entity/personal/PersonalSettingsKey';
 
 export class SettingViewState {
   sectionKey: SettingsSectionKey;

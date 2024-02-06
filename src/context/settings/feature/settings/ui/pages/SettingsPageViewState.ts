@@ -1,4 +1,4 @@
-import { SectionViewState } from '../../../../shared/section/ui/components/SectionViewState';
+import { SectionViewState } from '../components/Section/SectionViewState';
 
 export class SettingsPageViewState {
   sections: SectionViewState[];

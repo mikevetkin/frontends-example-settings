@@ -1,6 +1,6 @@
-import { LazyToDoSection } from '../components/LazyToDoSection';
+import { LazyToDoSection } from '../components/LazyToDoSection/LazyToDoSection';
 import { useSettings } from '../store/useSettings';
-import { Section } from '@/context/settings/shared/section/ui/components/Section';
+import { Section } from '@/context/settings/feature/settings/ui/components/Section/Section';
 
 export const SettingsPage: React.FC = () => {
   const { viewState, dispatch } = useSettings();

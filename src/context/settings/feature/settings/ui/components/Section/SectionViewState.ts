@@ -1,4 +1,4 @@
-import { SettingViewState } from '../../../setting/ui/components/SettingViewState';
+import { SettingViewState } from '../Setting/SettingViewState';
 
 export class SectionViewState {
   heading: string;

@@ -1,9 +1,9 @@
 import { useEffect, useReducer } from 'react';
-import { emailSettings } from '../../../email-notifications/domian/entity/EmailSettings';
+import { emailSettings } from '../../domain/entity/email-notifications/EmailSettings';
 import { settingsReducer } from '../../domain/functional-core/SettingsReducer';
 import { settingsState } from '../../domain/functional-core/SettingsState';
 import { settings } from '../../domain/entity/Settings';
-import { settingsPagePresentation } from '../../presentation/settingsPagePresentation';
+import { settingsPagePresentation } from '../pages/settingsPagePresentation';
 
 export const useSettings = () => {
   const [state, dispatch] = useReducer(settingsReducer, settingsState());

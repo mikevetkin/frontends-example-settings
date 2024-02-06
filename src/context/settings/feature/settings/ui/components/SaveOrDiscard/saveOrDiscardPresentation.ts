@@ -1,5 +1,5 @@
 import { SettingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
-import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
+import { SaveOrDiscardViewState } from './SaveOrDiscardViewState';
 import { ButtonViewState } from '@/core/view-state/ButtonViewState';
 import _ from 'lodash';
 

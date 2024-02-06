@@ -1,4 +1,4 @@
-import { PersonalSettingsKey } from '../entity/PersonalSettingsKey';
+import { PersonalSettingsKey } from '../../entity/personal/PersonalSettingsKey';
 
 export const mapPersonalSettingsTitle: Record<PersonalSettingsKey, string> = {
   [PersonalSettingsKey.FirstName]: 'First Name',

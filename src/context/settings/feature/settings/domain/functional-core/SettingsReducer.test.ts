@@ -1,5 +1,5 @@
-import { emailSettings } from '../../../email-notifications/domian/entity/EmailSettings';
-import { EmailSettingsKey } from '../../../email-notifications/domian/entity/EmailSettingsKey';
+import { emailSettings } from '../entity/email-notifications/EmailSettings';
+import { EmailSettingsKey } from '../entity/email-notifications/EmailSettingsKey';
 import { settings } from '../entity/Settings';
 import { SettingsSectionKey } from '../entity/SettingsSectionKey';
 import { settingsReducer } from './SettingsReducer';

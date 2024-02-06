@@ -1,7 +1,7 @@
-import { saveOrDiscardPresenatation } from './saveOrDiscardPresentation';
-import { emailSettings } from '@/context/settings/feature/email-notifications/domian/entity/EmailSettings';
-import { SaveOrDiscardViewState } from '../ui/components/SaveOrDiscardViewState';
+import { emailSettings } from '@/context/settings/feature/settings/domain/entity/email-notifications/EmailSettings';
+import { SaveOrDiscardViewState } from './SaveOrDiscardViewState';
 import { settingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
+import { saveOrDiscardPresenatation } from './saveOrDiscardPresentation';
 
 describe('Кнопки сохранения и отмены', () => {
   test('Если пользователь не вносил изменения, кнопки скрыты', () => {

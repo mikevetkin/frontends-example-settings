@@ -1,11 +1,11 @@
 import {
   EmailSettings,
   emailSettings,
-} from '../../../email-notifications/domian/entity/EmailSettings';
+} from './email-notifications/EmailSettings';
 import {
   PersonalSettings,
   personalSettings,
-} from '../../../personal/domain/entity/PersonalSettings';
+} from './personal/PersonalSettings';
 import { SettingsSectionKey } from './SettingsSectionKey';
 
 export interface Settings {

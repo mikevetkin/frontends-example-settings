@@ -1,4 +1,4 @@
-import { EmailSettingsKey } from '../entity/EmailSettingsKey';
+import { EmailSettingsKey } from '../../entity/email-notifications/EmailSettingsKey';
 
 export const mapEmailSettingsTitle: Record<EmailSettingsKey, string> = {
   [EmailSettingsKey.YourEmail]: 'Your Email',

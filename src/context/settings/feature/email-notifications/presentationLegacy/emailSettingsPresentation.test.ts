@@ -1,8 +1,8 @@
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { emailSettings } from '../domian/entity/EmailSettings';
+import { emailSettings } from '../../settings/domain/entity/email-notifications/EmailSettings';
 import { emailSettingsState } from '../domian/functional-core/EmailSettingsState';
 import { emailSettingsPresentation } from './emailSettingsPresentation';
-import { SettingViewState } from '../../../shared/setting/ui/components/SettingViewState';
+import { SettingViewState } from '../../settings/ui/components/Setting/SettingViewState';
 
 describe('emailNotificationSettingsPresentation (Презентейшн настроек уведомлений по почте)', () => {
   describe('Настройки', () => {

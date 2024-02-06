@@ -1,13 +1,15 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { AllSettingsKey } from '../../settings/domain/entity/AllSettingsKey';
-import { settingsState } from '../../settings/domain/functional-core/settingsState';
-import { settingControlPresentation } from './settingControlPresentation';
 import { InputViewState } from '@/core/view-state/InputViewState';
+import { settingControlPresentation } from './settingControlPresentation';
+import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
+import { settingsState } from '../../../domain/functional-core/SettingsState';
+import { EmailSettingsKey } from '@/context/settings/feature/settings/domain/entity/email-notifications/EmailSettingsKey';
 
 test('Булевые настройки управляются свитчером', () => {
   const viewState = settingControlPresentation(
     settingsState(),
-    AllSettingsKey.MarketingEmails
+    SettingsSectionKey.EmailSettings,
+    EmailSettingsKey.MarketingEmails
   );
 
   expect(viewState).toBeInstanceOf(SwitcherViewState);
@@ -16,7 +18,8 @@ test('Булевые настройки управляются свитчеро�
 test('Строковые настройки управляются инпутом', () => {
   const viewState = settingControlPresentation(
     settingsState(),
-    AllSettingsKey.YourEmail
+    SettingsSectionKey.EmailSettings,
+    EmailSettingsKey.YourEmail
   );
 
   expect(viewState).toBeInstanceOf(InputViewState);

@@ -1,7 +1,7 @@
-import { SectionViewState } from '@/context/settings/shared/section/ui/components/SectionViewState';
-import { Setting } from '../../../setting/ui/components/Setting';
-import { EmailSettingsKey } from '@/context/settings/feature/email-notifications/domian/entity/EmailSettingsKey';
-import { PersonalSettingsKey } from '@/context/settings/feature/personal/domain/entity/PersonalSettingsKey';
+import { SectionViewState } from '@/context/settings/feature/settings/ui/components/Section/SectionViewState';
+import { Setting } from '../Setting/Setting';
+import { EmailSettingsKey } from '@/context/settings/feature/settings/domain/entity/email-notifications/EmailSettingsKey';
+import { PersonalSettingsKey } from '@/context/settings/feature/settings/domain/entity/personal/PersonalSettingsKey';
 import { SettingsSectionKey } from '@/context/settings/feature/settings/domain/entity/SettingsSectionKey';
 
 interface SectionProps {

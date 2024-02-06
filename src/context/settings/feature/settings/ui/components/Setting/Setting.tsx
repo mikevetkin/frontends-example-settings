@@ -3,7 +3,7 @@ import { SettingViewState } from './SettingViewState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { Input } from '@/components/ui/input';
-import { EmailSettings } from '../../../../feature/email-notifications/domian/entity/EmailSettings';
+import { EmailSettings } from '../../../domain/entity/email-notifications/EmailSettings';
 
 export interface SettingProps {
   viewState: SettingViewState;
