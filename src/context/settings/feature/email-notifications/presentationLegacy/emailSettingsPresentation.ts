@@ -10,6 +10,8 @@ import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { saveOrDiscardPresenatation } from '@/context/settings/shared/save-or-discard/presentation/saveOrDiscardPresentation';
 import { settingControlPresentation } from '@/context/settings/shared/setting/presentation/settingControlPresentation';
 
+// FIXME: Вытащить тесты и засунуть куда нужно
+
 export const emailSettingsPresentation = (
   state: EmailSettingsState
 ): EmailSettingsViewState => {
