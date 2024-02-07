@@ -11,18 +11,25 @@ export function settingControlPresentation(
   key: EmailSettingsKey | PersonalSettingsKey
 ): SwitcherViewState | InputViewState {
   const { status, draft } = state;
-  const value = draft[sectionKey][key];
-  // FIXME: Что с типами
+
+  const mapValue: Record<SettingsSectionKey, string | boolean> = {
+    [SettingsSectionKey.EmailSettings]:
+      draft.emailSettings[key as EmailSettingsKey],
+    [SettingsSectionKey.PersonalSettings]:
+      draft.personalSettings[key as PersonalSettingsKey],
+  };
+
+  const value = mapValue[sectionKey];
 
   switch (typeof value) {
     case 'boolean':
       return new SwitcherViewState({
-        checked: draft[sectionKey][key],
+        checked: value,
         disabled: status === 'pending',
       });
     case 'string':
       return new InputViewState({
-        value: draft[sectionKey][key],
+        value: value,
         disabled: status === 'pending',
       });
   }
