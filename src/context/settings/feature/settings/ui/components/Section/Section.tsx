@@ -29,6 +29,7 @@ export const Section: React.FC<SectionProps> = ({
             onChange={(value) =>
               onChangeSetting(setting.sectionKey, setting.key, value)
             }
+            key={setting.key}
           />
         ))}
       </div>
