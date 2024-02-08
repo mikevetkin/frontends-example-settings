@@ -1,6 +1,6 @@
 import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../domain/functional-core/SettingsState';
-import { sectionPresentation } from '../components/Section/SectionPresentation';
+import { sectionPresentation } from '../components/Section/sectionPresentation';
 import { SettingsPageViewState } from './SettingsPageViewState';
 
 export const settingsPagePresentation = (state: SettingsState) => {
