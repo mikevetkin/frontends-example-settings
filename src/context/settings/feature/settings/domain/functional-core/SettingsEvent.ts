@@ -1,13 +1,13 @@
-import { EmailSettingsKey } from '../entity/email-notifications/EmailSettingsKey';
-import { PersonalSettingsKey } from '../entity/personal/PersonalSettingsKey';
 import { Settings } from '../entity/Settings';
+import { SettingsKey } from '../entity/SettingsKey';
 import { SettingsSectionKey } from '../entity/SettingsSectionKey';
+import { SettingsValue } from '../entity/SettingsValue';
 
 export interface ChangeSettingEvent {
   type: 'ChangeSettingEvent';
   sectionKey: SettingsSectionKey;
-  key: EmailSettingsKey | PersonalSettingsKey;
-  value: boolean | string; // FIXME: Вынести в общее
+  key: SettingsKey;
+  value: SettingsValue;
 }
 
 export interface SaveEvent {

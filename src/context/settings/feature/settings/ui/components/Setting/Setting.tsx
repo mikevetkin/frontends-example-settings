@@ -3,12 +3,11 @@ import { SettingViewState } from './SettingViewState';
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { InputViewState } from '@/core/view-state/InputViewState';
 import { Input } from '@/components/ui/input';
-import { EmailSettings } from '../../../domain/entity/email-notifications/EmailSettings';
+import { SettingsValue } from '../../../domain/entity/SettingsValue';
 
 export interface SettingProps {
   viewState: SettingViewState;
-  // FIXME: Трабл
-  onChange: (value: EmailSettings[keyof EmailSettings]) => void;
+  onChange: (value: SettingsValue) => void;
 }
 
 // FIXME: Контрол это отдельный компонент
