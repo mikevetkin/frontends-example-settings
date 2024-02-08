@@ -1,3 +1,4 @@
+import { SettingsKey } from '../../../domain/entity/SettingsKey';
 import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
 import { EmailSettingsKey } from '../../../domain/entity/email-notifications/EmailSettingsKey';
 import { PersonalSettingsKey } from '../../../domain/entity/personal/PersonalSettingsKey';
@@ -12,7 +13,7 @@ import { settingControlPresentation } from './settingControlPresentation';
 export const settingPresentation = (
   state: SettingsState,
   section: SettingsSectionKey,
-  setting: EmailSettingsKey | PersonalSettingsKey
+  setting: SettingsKey
 ): SettingViewState => {
   const mapTitle: Record<SettingsSectionKey, string> = {
     [SettingsSectionKey.EmailSettings]:
