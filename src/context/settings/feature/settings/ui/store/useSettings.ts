@@ -3,7 +3,7 @@ import { emailSettings } from '../../domain/entity/email-notifications/EmailSett
 import { settingsReducer } from '../../domain/functional-core/SettingsReducer';
 import { settingsState } from '../../domain/functional-core/SettingsState';
 import { settings } from '../../domain/entity/Settings';
-import { settingsPagePresentation } from '../pages/SettingsPagePresentation';
+import { settingsPagePresentation } from '../pages/settingsPagePresentation';
 
 export const useSettings = () => {
   const [state, dispatch] = useReducer(settingsReducer, settingsState());

@@ -1,22 +1,9 @@
-import { Skeleton } from '@/components/ui/skeleton';
 import { LazyToDoSection } from '../components/LazyToDoSection/LazyToDoSection';
 import { SectionViewState } from '../components/Section/SectionViewState';
 import { useSettings } from '../store/useSettings';
 import { Section } from '@/context/settings/feature/settings/ui/components/Section/Section';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
-
-interface SkeletonSectionProps {
-  viewState: SkeletonListViewState;
-}
-
-const SectionSkeleton: React.FC<SkeletonSectionProps> = ({ viewState }) => (
-  <div className="flex flex-col gap-4">
-    <Skeleton className="h-[20px] w-[100px] rounded-full" />
-    {viewState.list.map(() => (
-      <Skeleton className="h-[76px] w-[100%]" />
-    ))}
-  </div>
-);
+import { SectionSkeleton } from '../components/SectionSkeleton/SectionSkeleton';
 
 export const SettingsPage: React.FC = () => {
   const { viewState, dispatch } = useSettings();
@@ -25,7 +12,7 @@ export const SettingsPage: React.FC = () => {
     <div className="w-full space-y-6">
       <h1 className="mb-4 text-left text-4xl font-medium">Settings</h1>
       <LazyToDoSection />
-      {viewState.sections.map((section) => {
+      {viewState.sections.map((section, index) => {
         switch (section.constructor) {
           case SectionViewState:
             return (
@@ -39,10 +26,11 @@ export const SettingsPage: React.FC = () => {
                     value,
                   })
                 }
+                key={index}
               />
             );
           case SkeletonListViewState:
-            return <SectionSkeleton viewState={section} />;
+            return <SectionSkeleton viewState={section} key={index} />;
         }
       })}
       <LazyToDoSection />
