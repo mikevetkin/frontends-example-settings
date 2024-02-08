@@ -1,6 +1,6 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { InputViewState } from '@/core/view-state/InputViewState';
-import { settingControlPresentation } from './settingControlPresentation';
+import { settingControlPresentation } from './SettingControlPresentation';
 import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
 import { settingsState } from '../../../domain/functional-core/SettingsState';
 import { EmailSettingsKey } from '@/context/settings/feature/settings/domain/entity/email-notifications/EmailSettingsKey';

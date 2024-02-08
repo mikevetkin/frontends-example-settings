@@ -16,12 +16,12 @@ export class SettingViewState {
     key,
     title,
     description,
-    control: switcher,
+    control,
   }: SettingViewState) {
     this.sectionKey = sectionKey;
     this.key = key;
     this.title = title;
     this.description = description;
-    this.control = switcher;
+    this.control = control;
   }
 }

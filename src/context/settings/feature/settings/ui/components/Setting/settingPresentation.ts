@@ -8,7 +8,7 @@ import { mapEmailSettingsTitle } from '../../../domain/mapper/email-notification
 import { mapPersonalSettingsDescription } from '../../../domain/mapper/personal/mapPersonalSettingsDescription';
 import { mapPersonalSettingsTitle } from '../../../domain/mapper/personal/mapPersonalSettingsTitle';
 import { SettingViewState } from './SettingViewState';
-import { settingControlPresentation } from './settingControlPresentation';
+import { settingControlPresentation } from '../SettingControl/SettingControlPresentation';
 
 export const settingPresentation = (
   state: SettingsState,
