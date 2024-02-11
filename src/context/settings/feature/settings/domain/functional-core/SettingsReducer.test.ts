@@ -134,7 +134,7 @@ describe('События в настройках', () => {
           }),
         }),
       }),
-      { type: 'DiscardEvent', section: SettingsSectionKey.EmailSettings }
+      { type: 'DiscardEvent' }
     );
 
     test('Сбрасывает настройки черновика до оригинальных', () => {
@@ -144,7 +144,7 @@ describe('События в настройках', () => {
     });
   });
 
-  describe('SaveEvent (Сохранение текущих настроек)', () => {
+  describe('ReceiveSave (Сохранение текущих настроек)', () => {
     const state = settingsReducer(
       settingsState({
         original: settings({
@@ -158,7 +158,7 @@ describe('События в настройках', () => {
           }),
         }),
       }),
-      { type: 'SaveEvent', section: SettingsSectionKey.EmailSettings }
+      { type: 'ReceiveSave' }
     );
 
     test('Записывает настройки черновика как оригинальные', () => {

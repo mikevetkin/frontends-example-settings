@@ -12,12 +12,10 @@ export interface ChangeSettingEvent {
 
 export interface SaveEvent {
   type: 'SaveEvent';
-  section: SettingsSectionKey;
 }
 
 export interface DiscardEvent {
   type: 'DiscardEvent';
-  section: SettingsSectionKey;
 }
 
 export interface ReceiveSettingsEvent {
@@ -25,8 +23,13 @@ export interface ReceiveSettingsEvent {
   data: Settings;
 }
 
+export interface ReceiveSave {
+  type: 'ReceiveSave';
+}
+
 export type SettingsEvent =
   | ChangeSettingEvent
   | SaveEvent
   | DiscardEvent
-  | ReceiveSettingsEvent;
+  | ReceiveSettingsEvent
+  | ReceiveSave;

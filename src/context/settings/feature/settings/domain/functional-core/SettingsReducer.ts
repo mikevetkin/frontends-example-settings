@@ -2,21 +2,21 @@ import {
   ReceiveSettingsEvent,
   ChangeSettingEvent,
   SettingsEvent,
-  SaveEvent,
-  DiscardEvent,
 } from './SettingsEvent';
 import { SettingsState } from './SettingsState';
 
 export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
   switch (event.type) {
     case 'SaveEvent':
-      return saveEvent(state, event);
+      return saveEvent(state);
     case 'DiscardEvent':
-      return discardEvent(state, event);
+      return discardEvent(state);
     case 'ReceiveSettingsEvent':
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
       return changeSetting(state, event);
+    case 'ReceiveSave':
+      return receiveSave(state);
   }
 };
 
@@ -36,26 +36,17 @@ function changeSetting(
   };
 }
 
-function saveEvent(state: SettingsState, event: SaveEvent): SettingsState {
+function saveEvent(state: SettingsState): SettingsState {
   return {
     ...state,
-    original: {
-      ...state.original,
-      [event.section]: state.draft[event.section],
-    },
+    status: 'pending',
   };
 }
 
-function discardEvent(
-  state: SettingsState,
-  event: DiscardEvent
-): SettingsState {
+function discardEvent(state: SettingsState): SettingsState {
   return {
     ...state,
-    draft: {
-      ...state.draft,
-      [event.section]: state.original[event.section],
-    },
+    draft: state.original,
   };
 }
 
@@ -68,5 +59,13 @@ function receiveSettings(
     status: 'idle',
     original: event.data,
     draft: event.data,
+  };
+}
+
+function receiveSave(state: SettingsState): SettingsState {
+  return {
+    ...state,
+    status: 'idle',
+    original: state.draft,
   };
 }

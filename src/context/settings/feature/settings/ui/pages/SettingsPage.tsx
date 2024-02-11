@@ -4,14 +4,25 @@ import { useSettings } from '../store/useSettings';
 import { Section } from '@/context/settings/feature/settings/ui/components/Section/Section';
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { SectionSkeleton } from '../components/SectionSkeleton/SectionSkeleton';
+import { SaveOrDiscard } from '../components/SaveOrDiscard/SaveOrDiscard';
 
 export const SettingsPage: React.FC = () => {
   const { viewState, dispatch } = useSettings();
 
+  const saveSettings = () => {
+    dispatch({
+      type: 'SaveEvent',
+    });
+
+    setTimeout(() => {
+      dispatch({ type: 'ReceiveSave' });
+    }, 3000);
+  };
+
   return (
     <div className="w-full space-y-6">
       <h1 className="mb-4 text-left text-4xl font-medium">Settings</h1>
-      <LazyToDoSection />
+      {/* <LazyToDoSection /> */}
       {viewState.sections.map((section, index) => {
         switch (section.constructor) {
           case SectionViewState:
@@ -26,18 +37,6 @@ export const SettingsPage: React.FC = () => {
                     value,
                   })
                 }
-                onSaveSectionSettings={(key) =>
-                  dispatch({
-                    type: 'SaveEvent',
-                    section: key,
-                  })
-                }
-                onDiscardSectionSettings={(key) =>
-                  dispatch({
-                    type: 'DiscardEvent',
-                    section: key,
-                  })
-                }
                 key={index}
               />
             );
@@ -46,6 +45,13 @@ export const SettingsPage: React.FC = () => {
         }
       })}
       <LazyToDoSection />
+      {viewState.actions && (
+        <SaveOrDiscard
+          viewState={viewState.actions}
+          onClickSave={saveSettings}
+          onClickDiscard={() => dispatch({ type: 'DiscardEvent' })}
+        />
+      )}
     </div>
   );
 };
