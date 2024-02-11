@@ -7,7 +7,6 @@ import { SaveOrDiscard } from '../SaveOrDiscard/SaveOrDiscard';
 
 interface SectionProps {
   viewState: SectionViewState;
-  // FIXME: Эту хуйню отсюда вытащить и дать каджой настройке и каждой секции кей
   onChangeSetting: (
     sectionKey: SettingsSectionKey,
     key: SettingsKey,
