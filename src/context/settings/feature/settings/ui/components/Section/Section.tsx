@@ -3,6 +3,7 @@ import { Setting } from '../Setting/Setting';
 import { SettingsSectionKey } from '@/context/settings/feature/settings/domain/entity/SettingsSectionKey';
 import { SettingsKey } from '../../../domain/entity/SettingsKey';
 import { SettingsValue } from '../../../domain/entity/SettingsValue';
+import { SaveOrDiscard } from '../SaveOrDiscard/SaveOrDiscard';
 
 interface SectionProps {
   viewState: SectionViewState;
@@ -32,6 +33,13 @@ export const Section: React.FC<SectionProps> = ({
             key={setting.key}
           />
         ))}
+        {viewState.actions && (
+          <SaveOrDiscard
+            viewState={viewState.actions}
+            onClickSave={() => null}
+            onClickDiscard={() => null}
+          />
+        )}
       </div>
     </section>
   );
