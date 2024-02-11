@@ -17,6 +17,3 @@ export function saveOrDiscardPresenatation(
     }),
   });
 }
-
-// FIXMEL import _ from 'lodash';
-// _.isEqual(state.draft, state.original)
