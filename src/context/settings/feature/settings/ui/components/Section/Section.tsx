@@ -33,7 +33,7 @@ export const Section: React.FC<SectionProps> = ({
           <Setting
             viewState={setting}
             onChange={(value) =>
-              onChangeSetting(setting.sectionKey, setting.key, value)
+              onChangeSetting(viewState.key, setting.key, value)
             }
             key={setting.key}
           />
