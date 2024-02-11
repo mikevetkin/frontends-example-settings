@@ -1,9 +1,9 @@
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../domain/functional-core/SettingsState';
-import { sectionPresentation } from '../components/Section/sectionPresentation';
 import { SettingsPageViewState } from './SettingsPageViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
+import { sectionPresentation } from '../components/Section/SectionPresentation';
 
 export const settingsPagePresentation = (state: SettingsState) => {
   const { draft, status } = state;

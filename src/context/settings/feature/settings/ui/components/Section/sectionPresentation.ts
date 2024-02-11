@@ -12,6 +12,7 @@ export const sectionPresentation = (
   section: SettingsSectionKey
 ): SectionViewState => {
   return new SectionViewState({
+    key: section,
     heading: mapSettingsSectionHeading[section],
     list: (Object.keys(state.draft[section]) as SettingsKey[]).map((setting) =>
       settingPresentation(state, section, setting)
