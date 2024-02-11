@@ -7,16 +7,21 @@ import { SaveOrDiscard } from '../SaveOrDiscard/SaveOrDiscard';
 
 interface SectionProps {
   viewState: SectionViewState;
+  // FIXME: Эту хуйню отсюда вытащить и дать каджой настройке и каждой секции кей
   onChangeSetting: (
     sectionKey: SettingsSectionKey,
     key: SettingsKey,
     value: SettingsValue
   ) => void;
+  onSaveSectionSettings: (key: SettingsSectionKey) => void;
+  onDiscardSectionSettings: (key: SettingsSectionKey) => void;
 }
 
 export const Section: React.FC<SectionProps> = ({
   viewState,
   onChangeSetting,
+  onSaveSectionSettings,
+  onDiscardSectionSettings,
 }) => {
   return (
     <section>
@@ -36,8 +41,8 @@ export const Section: React.FC<SectionProps> = ({
         {viewState.actions && (
           <SaveOrDiscard
             viewState={viewState.actions}
-            onClickSave={() => null}
-            onClickDiscard={() => null}
+            onClickSave={() => onSaveSectionSettings(viewState.key)}
+            onClickDiscard={() => onDiscardSectionSettings(viewState.key)}
           />
         )}
       </div>
