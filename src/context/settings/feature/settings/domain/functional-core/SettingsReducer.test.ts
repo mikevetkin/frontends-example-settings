@@ -134,7 +134,7 @@ describe('События в настройках', () => {
           }),
         }),
       }),
-      { type: 'DiscardEvent' }
+      { type: 'DiscardEvent', section: SettingsSectionKey.EmailSettings }
     );
 
     test('Сбрасывает настройки черновика до оригинальных', () => {
@@ -158,7 +158,7 @@ describe('События в настройках', () => {
           }),
         }),
       }),
-      { type: 'SaveEvent' }
+      { type: 'SaveEvent', section: SettingsSectionKey.EmailSettings }
     );
 
     test('Записывает настройки черновика как оригинальные', () => {

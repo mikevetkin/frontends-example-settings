@@ -5,7 +5,7 @@ import { SettingsSectionKey } from '@/context/settings/feature/settings/domain/e
 import { PersonalSettingsKey } from '@/context/settings/feature/settings/domain/entity/personal/PersonalSettingsKey';
 
 export class SettingViewState {
-  sectionKey: SettingsSectionKey;
+  sectionKey: SettingsSectionKey; // FIXME: Он точно должен тут быть?
   key: EmailSettingsKey | PersonalSettingsKey;
   title: string;
   description: string;

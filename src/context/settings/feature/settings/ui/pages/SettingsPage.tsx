@@ -26,6 +26,18 @@ export const SettingsPage: React.FC = () => {
                     value,
                   })
                 }
+                onSaveSectionSettings={(key) =>
+                  dispatch({
+                    type: 'SaveEvent',
+                    section: key,
+                  })
+                }
+                onDiscardSectionSettings={(key) =>
+                  dispatch({
+                    type: 'DiscardEvent',
+                    section: key,
+                  })
+                }
                 key={index}
               />
             );

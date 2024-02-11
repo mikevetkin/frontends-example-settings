@@ -2,15 +2,17 @@ import {
   ReceiveSettingsEvent,
   ChangeSettingEvent,
   SettingsEvent,
+  SaveEvent,
+  DiscardEvent,
 } from './SettingsEvent';
 import { SettingsState } from './SettingsState';
 
 export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
   switch (event.type) {
     case 'SaveEvent':
-      return saveEvent(state);
+      return saveEvent(state, event);
     case 'DiscardEvent':
-      return discardEvent(state);
+      return discardEvent(state, event);
     case 'ReceiveSettingsEvent':
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
@@ -34,17 +36,26 @@ function changeSetting(
   };
 }
 
-function saveEvent(state: SettingsState): SettingsState {
+function saveEvent(state: SettingsState, event: SaveEvent): SettingsState {
   return {
     ...state,
-    original: state.draft,
+    original: {
+      ...state.original,
+      [event.section]: state.draft[event.section],
+    },
   };
 }
 
-function discardEvent(state: SettingsState): SettingsState {
+function discardEvent(
+  state: SettingsState,
+  event: DiscardEvent
+): SettingsState {
   return {
     ...state,
-    draft: state.original,
+    draft: {
+      ...state.draft,
+      [event.section]: state.original[event.section],
+    },
   };
 }
 
