@@ -30,7 +30,6 @@ export const settingPresentation = (
   };
 
   return new SettingViewState({
-    sectionKey: section,
     key: setting,
     title: mapTitle[section],
     description: mapDescription[section],

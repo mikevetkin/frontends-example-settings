@@ -15,6 +15,8 @@ export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
       return changeSetting(state, event);
+    case 'ReceiveSave':
+      return receiveSave(state);
   }
 };
 
@@ -37,7 +39,7 @@ function changeSetting(
 function saveEvent(state: SettingsState): SettingsState {
   return {
     ...state,
-    original: state.draft,
+    status: 'pending',
   };
 }
 
@@ -57,5 +59,13 @@ function receiveSettings(
     status: 'idle',
     original: event.data,
     draft: event.data,
+  };
+}
+
+function receiveSave(state: SettingsState): SettingsState {
+  return {
+    ...state,
+    status: 'idle',
+    original: state.draft,
   };
 }

@@ -24,3 +24,17 @@ test('Строковые настройки управляются инпуто�
 
   expect(viewState).toBeInstanceOf(InputViewState);
 });
+
+describe('Если система отправляет данные', () => {
+  const viewState = settingControlPresentation(
+    settingsState({
+      status: 'pending',
+    }),
+    SettingsSectionKey.EmailSettings,
+    EmailSettingsKey.MarketingEmails
+  );
+
+  test('Контролы блокируются', () => {
+    expect(viewState.disabled).toBe(true);
+  });
+});

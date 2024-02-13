@@ -3,6 +3,9 @@ import { emailSettings } from '../../domain/entity/email-notifications/EmailSett
 import { settingsReducer } from '../../domain/functional-core/SettingsReducer';
 import { settingsState } from '../../domain/functional-core/SettingsState';
 import { settings } from '../../domain/entity/Settings';
+import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
+import { SettingsKey } from '../../domain/entity/SettingsKey';
+import { SettingsValue } from '../../domain/entity/SettingsValue';
 import { settingsPagePresentation } from '../pages/settingsPagePresentation';
 
 export const useSettings = () => {
@@ -17,7 +20,6 @@ export const useSettings = () => {
         type: 'ReceiveSettingsEvent',
         data: settings({
           emailSettings: emailSettings({
-            marketingEmails: false,
             securityEmails: true,
           }),
         }),
@@ -25,8 +27,37 @@ export const useSettings = () => {
     }, 2000);
   }, []);
 
+  const changeSetting = (
+    section: SettingsSectionKey,
+    setting: SettingsKey,
+    value: SettingsValue
+  ) =>
+    dispatch({
+      type: 'ChangeSettingEvent',
+      sectionKey: section,
+      key: setting,
+      value,
+    });
+
+  /**
+   * Эмуляция отправки данных
+   */
+  const saveSettings = () => {
+    dispatch({
+      type: 'SaveEvent',
+    });
+
+    setTimeout(() => {
+      dispatch({ type: 'ReceiveSave' });
+    }, 3000);
+  };
+
+  const discardSettings = () => dispatch({ type: 'DiscardEvent' });
+
   return {
     viewState: settingsPagePresentation(state),
-    dispatch,
+    changeSetting,
+    saveSettings,
+    discardSettings,
   };
 };

@@ -23,8 +23,13 @@ export interface ReceiveSettingsEvent {
   data: Settings;
 }
 
+export interface ReceiveSave {
+  type: 'ReceiveSave';
+}
+
 export type SettingsEvent =
   | ChangeSettingEvent
   | SaveEvent
   | DiscardEvent
-  | ReceiveSettingsEvent;
+  | ReceiveSettingsEvent
+  | ReceiveSave;

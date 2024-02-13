@@ -7,8 +7,6 @@ export interface SettingProps {
   onChange: (value: SettingsValue) => void;
 }
 
-// FIXME: Контрол это отдельный компонент
-
 export const Setting: React.FC<SettingProps> = ({ viewState, onChange }) => {
   return (
     <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
