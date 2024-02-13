@@ -7,49 +7,35 @@ import { SectionSkeleton } from '../components/SectionSkeleton/SectionSkeleton';
 import { SaveOrDiscard } from '../components/SaveOrDiscard/SaveOrDiscard';
 
 export const SettingsPage: React.FC = () => {
-  const { viewState, dispatch } = useSettings();
+  const { viewState, changeSetting, saveSettings, discardSettings } =
+    useSettings();
 
-  const saveSettings = () => {
-    dispatch({
-      type: 'SaveEvent',
-    });
-
-    setTimeout(() => {
-      dispatch({ type: 'ReceiveSave' });
-    }, 3000);
+  const renderSection = (section: SectionViewState | SkeletonListViewState) => {
+    switch (section.constructor) {
+      case SectionViewState:
+        return (
+          <Section
+            viewState={section as SectionViewState}
+            onChangeSetting={changeSetting}
+            key={section.key}
+          />
+        );
+      case SkeletonListViewState:
+        return <SectionSkeleton viewState={section} key={section.key} />;
+    }
   };
 
   return (
     <div className="w-full space-y-6">
       <h1 className="mb-4 text-left text-4xl font-medium">Settings</h1>
       {/* <LazyToDoSection /> */}
-      {viewState.sections.map((section, index) => {
-        switch (section.constructor) {
-          case SectionViewState:
-            return (
-              <Section
-                viewState={section as SectionViewState}
-                onChangeSetting={(section, setting, value) =>
-                  dispatch({
-                    type: 'ChangeSettingEvent',
-                    sectionKey: section,
-                    key: setting,
-                    value,
-                  })
-                }
-                key={index}
-              />
-            );
-          case SkeletonListViewState:
-            return <SectionSkeleton viewState={section} key={index} />;
-        }
-      })}
+      {viewState.sections.map((section) => renderSection(section))}
       <LazyToDoSection />
       {viewState.actions && (
         <SaveOrDiscard
           viewState={viewState.actions}
           onClickSave={saveSettings}
-          onClickDiscard={() => dispatch({ type: 'DiscardEvent' })}
+          onClickDiscard={discardSettings}
         />
       )}
     </div>
