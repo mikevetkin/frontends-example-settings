@@ -168,5 +168,22 @@ describe('События в настройках', () => {
     });
   });
 
-  describe.skip('ReceiveEmailSettingsEvent (Получение настроек email уведомлений)', () => {});
+  describe('SaveEvent', () => {
+    const state = settingsReducer(settingsState(), { type: 'SaveEvent' });
+
+    test('Переводит систему в состояние отправки данных', () => {
+      expect(state.status).toBe('pending');
+    });
+  });
+
+  describe('ReceiveSettingsEvent (Получение настроек email уведомлений)', () => {
+    const state = settingsReducer(settingsState(), {
+      type: 'ReceiveSettingsEvent',
+      data: settings(),
+    });
+
+    test('Переводит систему в состояние простоя', () => {
+      expect(state.status).toBe('idle');
+    });
+  });
 });
