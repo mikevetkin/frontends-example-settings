@@ -15,6 +15,7 @@ export const settingsPagePresentation = (state: SettingsState) => {
       switch (status) {
         case 'loading':
           return new SkeletonListViewState({
+            key: section,
             list: Object.values(draft[section]).map(
               () => new SkeletonViewState()
             ),
