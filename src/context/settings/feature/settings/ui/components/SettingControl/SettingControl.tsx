@@ -17,7 +17,7 @@ export const SettingControl: React.FC<SettingControlProps> = ({
     case SwitcherViewState:
       return (
         <Switch
-          checked={(viewState as SwitcherViewState).checked}
+          checked={(viewState as SwitcherViewState).value}
           onCheckedChange={onChange}
           disabled={viewState.disabled}
         />

@@ -4,6 +4,24 @@ import { settingControlPresentation } from './SettingControlPresentation';
 import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
 import { settingsState } from '../../../domain/functional-core/SettingsState';
 import { EmailSettingsKey } from '@/context/settings/feature/settings/domain/entity/email-notifications/EmailSettingsKey';
+import { settings } from '../../../domain/entity/Settings';
+import { emailSettings } from '../../../domain/entity/email-notifications/EmailSettings';
+
+test('Пользователь видит и переключает черновик настройки', () => {
+  const viewState = settingControlPresentation(
+    settingsState({
+      draft: settings({
+        emailSettings: emailSettings({
+          marketingEmails: true,
+        }),
+      }),
+    }),
+    SettingsSectionKey.EmailSettings,
+    EmailSettingsKey.MarketingEmails
+  );
+
+  expect(viewState.value).toBe(true);
+});
 
 test('Булевые настройки управляются свитчером', () => {
   const viewState = settingControlPresentation(

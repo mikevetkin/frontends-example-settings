@@ -1,9 +1,9 @@
 export class SwitcherViewState {
-  checked: boolean;
+  value: boolean;
   disabled?: boolean;
 
-  constructor({ checked, disabled }: SwitcherViewState) {
-    this.checked = checked;
+  constructor({ value, disabled }: SwitcherViewState) {
+    this.value = value;
     this.disabled = disabled;
   }
 }
