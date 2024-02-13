@@ -49,7 +49,7 @@ export const useSettings = () => {
 
     setTimeout(() => {
       dispatch({ type: 'ReceiveSave' });
-    }, 3000);
+    }, 1000);
   };
 
   const discardSettings = () => dispatch({ type: 'DiscardEvent' });
