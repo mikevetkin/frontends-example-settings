@@ -3,9 +3,9 @@ import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../domain/functional-core/SettingsState';
 import { SettingsPageViewState } from './SettingsPageViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { saveOrDiscardPresenatation } from '../components/SaveOrDiscard/saveOrDiscardPresentation';
 import _ from 'lodash';
-import { sectionPresentation } from '../components/Section/sectionPresentation';
+import { sectionPresentation } from '../components/Section/SectionPresentation';
+import { saveOrDiscardPresenatation } from '../components/SaveOrDiscard/SaveOrDiscardPresentation';
 
 export const settingsPagePresentation = (state: SettingsState) => {
   const { original, draft, status } = state;

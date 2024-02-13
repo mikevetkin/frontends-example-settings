@@ -1,5 +1,5 @@
 import { settingsState } from '../../../domain/functional-core/SettingsState';
-import { saveOrDiscardPresenatation } from './saveOrDiscardPresentation';
+import { saveOrDiscardPresenatation } from './SaveOrDiscardPresentation';
 
 describe('Если данные отправляются', () => {
   const viewState = saveOrDiscardPresenatation(

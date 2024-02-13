@@ -6,7 +6,7 @@ import { settings } from '../../domain/entity/Settings';
 import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsKey } from '../../domain/entity/SettingsKey';
 import { SettingsValue } from '../../domain/entity/SettingsValue';
-import { settingsPagePresentation } from '../pages/settingsPagePresentation';
+import { settingsPagePresentation } from '../pages/SettingsPagePresentation';
 
 export const useSettings = () => {
   const [state, dispatch] = useReducer(settingsReducer, settingsState());

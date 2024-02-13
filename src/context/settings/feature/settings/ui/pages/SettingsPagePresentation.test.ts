@@ -3,7 +3,7 @@ import { settings } from '../../domain/entity/Settings';
 import { emailSettings } from '../../domain/entity/email-notifications/EmailSettings';
 import { settingsState } from '../../domain/functional-core/SettingsState';
 import { SaveOrDiscardViewState } from '../components/SaveOrDiscard/SaveOrDiscardViewState';
-import { settingsPagePresentation } from './settingsPagePresentation';
+import { settingsPagePresentation } from './SettingsPagePresentation';
 import { SectionViewState } from '../components/Section/SectionViewState';
 
 describe('Разделы настроек', () => {
