@@ -3,9 +3,9 @@ import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../domain/functional-core/SettingsState';
 import { SettingsPageViewState } from './SettingsPageViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
-import { sectionPresentation } from '../components/Section/SectionPresentation';
 import { saveOrDiscardPresenatation } from '../components/SaveOrDiscard/saveOrDiscardPresentation';
 import _ from 'lodash';
+import { sectionPresentation } from '../components/Section/sectionPresentation';
 
 export const settingsPagePresentation = (state: SettingsState) => {
   const { original, draft, status } = state;
@@ -15,6 +15,7 @@ export const settingsPagePresentation = (state: SettingsState) => {
       switch (status) {
         case 'loading':
           return new SkeletonListViewState({
+            key: section,
             list: Object.values(draft[section]).map(
               () => new SkeletonViewState()
             ),
