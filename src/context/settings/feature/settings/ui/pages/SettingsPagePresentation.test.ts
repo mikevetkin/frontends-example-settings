@@ -7,6 +7,37 @@ import { settingsPagePresentation } from './SettingsPagePresentation';
 import { SectionViewState } from '../components/Section/SectionViewState';
 
 describe('Разделы настроек', () => {
+  describe('Email уведомления', () => {
+    const viewState = settingsPagePresentation(
+      settingsState({
+        status: 'idle',
+      })
+    );
+
+    const emailSettingsSection = viewState.sections[0] as SectionViewState;
+
+    test('Пользователь видит заголовок', () => {
+      expect(emailSettingsSection.heading).toBe('Email Notifications');
+    });
+
+    test('Названия настроек', () => {
+      const titiles = emailSettingsSection.list.map((setting) => setting.title);
+
+      expect(titiles).toEqual(['Marketing emails', 'Security emails']);
+    });
+
+    test('Описания настроек', () => {
+      const descriptions = emailSettingsSection.list.map(
+        (setting) => setting.description
+      );
+
+      expect(descriptions).toEqual([
+        'Receive emails about new products, features, and more.',
+        'Receive emails about your account security.',
+      ]);
+    });
+  });
+
   describe('Если система в состоянии загрузки', () => {
     const viewState = settingsPagePresentation(
       settingsState({
