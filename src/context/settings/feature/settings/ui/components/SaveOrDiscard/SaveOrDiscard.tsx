@@ -15,14 +15,12 @@ export const SaveOrDiscard: React.FC<SaveOrDiscardProps> = ({
 }) => {
   return (
     <>
-      <div className="flex justify-between gap-2">
-        <div className="flex flex-col items-start">
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-col items-start space-y-0.5 text-left text-base">
           <h5 className="mb-1 font-medium leading-none tracking-tight">
             Changes detected
           </h5>
-          <div className="text-sm [&_p]:leading-relaxed">
-            Would you like to save?
-          </div>
+          <div>Would you like to save?</div>
         </div>
         <div className="flex gap-2">
           <Button
