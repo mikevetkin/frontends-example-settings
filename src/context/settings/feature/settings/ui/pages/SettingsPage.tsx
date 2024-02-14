@@ -26,17 +26,19 @@ export const SettingsPage: React.FC = () => {
   };
 
   return (
-    <div className="w-full space-y-6">
+    <div className="relative h-[100vh] w-full space-y-6 p-8">
       <h1 className="mb-4 text-left text-4xl font-medium">Settings</h1>
       <LazyToDoSection />
       {viewState.sections.map((section) => renderSection(section))}
       <LazyToDoSection />
       {viewState.actions && (
-        <SaveOrDiscard
-          viewState={viewState.actions}
-          onClickSave={saveSettings}
-          onClickDiscard={discardSettings}
-        />
+        <div className="absolute bottom-8 left-8 right-8 rounded-lg border bg-background px-3 py-3 text-sm">
+          <SaveOrDiscard
+            viewState={viewState.actions}
+            onClickSave={saveSettings}
+            onClickDiscard={discardSettings}
+          />
+        </div>
       )}
     </div>
   );
