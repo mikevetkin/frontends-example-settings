@@ -32,7 +32,7 @@ export const SettingsPage: React.FC = () => {
       {viewState.sections.map((section) => renderSection(section))}
       <LazyToDoSection />
       {viewState.actions && (
-        <div className="absolute bottom-8 left-8 right-8 rounded-lg border bg-background px-3 py-3 text-sm">
+        <div className="sticky bottom-8 left-8 right-8 rounded-lg border bg-background px-3 py-3 text-sm">
           <SaveOrDiscard
             viewState={viewState.actions}
             onClickSave={saveSettings}
