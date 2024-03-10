@@ -10,4 +10,7 @@ export const SecurityEmails = {
     description: 'Receive emails about your account security.',
 } as const;
 
-export const EmailSettings = [MarketingEmails, SecurityEmails];
+export const EmailSettings = {
+    heading: 'Email notifications',
+    settings: [MarketingEmails, SecurityEmails]
+} as const;
