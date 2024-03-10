@@ -1,3 +1,1 @@
-export enum SettingsSectionKey {
-  EmailSettings = 'emailSettings',
-}
+export type SettingsSectionKey = 'emailSettings';

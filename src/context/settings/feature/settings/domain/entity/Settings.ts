@@ -4,9 +4,7 @@ import {
 } from './email-notifications/EmailSettings';
 import { SettingsSectionKey } from './SettingsSectionKey';
 
-export interface Settings {
-  [SettingsSectionKey.EmailSettings]: EmailSettings;
-}
+export type Settings = Record<SettingsSectionKey, >
 
 export const settings = (data: Partial<Settings> = {}): Settings => ({
   emailSettings: emailSettings(),
