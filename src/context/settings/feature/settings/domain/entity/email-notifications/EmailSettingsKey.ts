@@ -1,4 +1,1 @@
-export enum EmailSettingsKey {
-  MarketingEmails = 'marketingEmails',
-  SecurityEmails = 'securityEmails',
-}
+export type EmailSettingsKey = 'marketingEmails' | 'securityEmails';

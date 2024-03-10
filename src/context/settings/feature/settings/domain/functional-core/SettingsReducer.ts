@@ -15,7 +15,7 @@ export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
       return changeSetting(state, event);
-    case 'ReceiveSave':
+    case 'ReceiveSaveEvent':
       return receiveSave(state);
   }
 };

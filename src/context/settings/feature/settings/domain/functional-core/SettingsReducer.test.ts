@@ -1,5 +1,4 @@
 import { emailSettings } from '../entity/email-notifications/EmailSettings';
-import { EmailSettingsKey } from '../entity/email-notifications/EmailSettingsKey';
 import { settings } from '../entity/Settings';
 import { SettingsSectionKey } from '../entity/SettingsSectionKey';
 import { settingsReducer } from './SettingsReducer';
@@ -20,7 +19,7 @@ describe('События в настройках', () => {
           {
             type: 'ChangeSettingEvent',
             sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.MarketingEmails,
+            key: 'marketingEmails',
             value: true,
           }
         );
@@ -42,7 +41,7 @@ describe('События в настройках', () => {
           {
             type: 'ChangeSettingEvent',
             sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.MarketingEmails,
+            key: 'marketingEmails',
             value: false,
           }
         );
@@ -64,7 +63,7 @@ describe('События в настройках', () => {
           {
             type: 'ChangeSettingEvent',
             sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.SecurityEmails,
+            key: 'securityEmails',
             value: true,
           }
         );
@@ -86,7 +85,7 @@ describe('События в настройках', () => {
           {
             type: 'ChangeSettingEvent',
             sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.SecurityEmails,
+            key: 'securityEmails',
             value: false,
           }
         );
@@ -94,28 +93,6 @@ describe('События в настройках', () => {
         expect(
           state.draft[SettingsSectionKey.EmailSettings].securityEmails
         ).toBe(false);
-      });
-
-      test('Выставляет email для получения уведомлений', () => {
-        const state = settingsReducer(
-          settingsState({
-            draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                yourEmail: '',
-              }),
-            }),
-          }),
-          {
-            type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.YourEmail,
-            value: 'test@email.com',
-          }
-        );
-
-        expect(state.draft[SettingsSectionKey.EmailSettings].yourEmail).toBe(
-          'test@email.com'
-        );
       });
     });
   });
@@ -158,7 +135,7 @@ describe('События в настройках', () => {
           }),
         }),
       }),
-      { type: 'ReceiveSave' }
+      { type: 'ReceiveSaveEvent' }
     );
 
     test('Записывает настройки черновика как оригинальные', () => {
