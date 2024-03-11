@@ -1,6 +1,4 @@
-import { emailSettings } from '../entity/email-notifications/EmailSettings';
 import { settings } from '../entity/Settings';
-import { SettingsSectionKey } from '../entity/SettingsSectionKey';
 import { settingsReducer } from './SettingsReducer';
 import { settingsState } from './SettingsState';
 
@@ -11,9 +9,7 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: false,
-              }),
+              securityEmails: false,
             }),
           }),
           {
@@ -32,9 +28,7 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: true,
-              }),
+              securityEmails: true,
             }),
           }),
           {
@@ -53,9 +47,7 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: false,
-              }),
+              securityEmails: false,
             }),
           }),
           {
@@ -74,9 +66,7 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: true,
-              }),
+              securityEmails: true,
             }),
           }),
           {
@@ -97,14 +87,10 @@ describe('События в настройках', () => {
     const state = settingsReducer(
       settingsState({
         original: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: false,
-          }),
+          securityEmails: false,
         }),
         draft: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: true,
-          }),
+          securityEmails: true,
         }),
       }),
       { type: 'DiscardEvent' }
@@ -121,14 +107,10 @@ describe('События в настройках', () => {
     const state = settingsReducer(
       settingsState({
         original: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: false,
-          }),
+          securityEmails: false,
         }),
         draft: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: true,
-          }),
+          securityEmails: true,
         }),
       }),
       { type: 'ReceiveSaveEvent' }
