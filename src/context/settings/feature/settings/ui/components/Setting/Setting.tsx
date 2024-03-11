@@ -1,6 +1,6 @@
 import { SettingViewState } from './SettingViewState';
-import { SettingsValue } from '../../../domain/entity/SettingsValue';
 import { SettingControl } from '../SettingControl/SettingControl';
+import { SettingsValue } from '../../../domain/entity/Settings';
 
 export interface SettingProps {
   viewState: SettingViewState;

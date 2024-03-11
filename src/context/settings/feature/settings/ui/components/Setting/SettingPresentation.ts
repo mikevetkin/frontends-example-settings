@@ -8,7 +8,7 @@ export const settingPresentation = (
   setting: Setting
 ): SettingViewState => {
   return new SettingViewState({
-    key: setting,
+    key: setting.key,
     title: setting.name,
     description: setting.description,
     control: settingControlPresentation(state, setting.key),

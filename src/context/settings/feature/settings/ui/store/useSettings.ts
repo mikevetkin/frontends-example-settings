@@ -1,12 +1,9 @@
 import { useEffect, useReducer } from 'react';
-import { emailSettings } from '../../domain/entity/email-notifications/EmailSettings';
 import { settingsReducer } from '../../domain/functional-core/SettingsReducer';
 import { settingsState } from '../../domain/functional-core/SettingsState';
-import { settings } from '../../domain/entity/Settings';
-import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
-import { SettingsKey } from '../../domain/entity/SettingsKey';
-import { SettingsValue } from '../../domain/entity/SettingsValue';
+import { SettingsValue, settings } from '../../domain/entity/Settings';
 import { settingsPagePresentation } from '../pages/SettingsPagePresentation';
+import { SettingKey } from '../../domain/entity/setting/SettingKey';
 
 export const useSettings = () => {
   const [state, dispatch] = useReducer(settingsReducer, settingsState());
@@ -19,23 +16,19 @@ export const useSettings = () => {
       dispatch({
         type: 'ReceiveSettingsEvent',
         data: settings({
-          emailSettings: emailSettings({
-            securityEmails: true,
-          }),
+          securityEmails: true,
         }),
       });
     }, 2000);
   }, []);
 
   const changeSetting = (
-    section: SettingsSectionKey,
-    setting: SettingsKey,
+    key: SettingKey,
     value: SettingsValue
   ) =>
     dispatch({
       type: 'ChangeSettingEvent',
-      sectionKey: section,
-      key: setting,
+      key,
       value,
     });
 
@@ -48,7 +41,7 @@ export const useSettings = () => {
     });
 
     setTimeout(() => {
-      dispatch({ type: 'ReceiveSave' });
+      dispatch({ type: 'ReceiveSaveEvent' });
     }, 1000);
   };
 

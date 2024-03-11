@@ -1,10 +1,9 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
-import { EmailSettingsKey } from '../../../domain/entity/email-notifications/EmailSettingsKey';
 import { InputViewState } from '@/core/view-state/InputViewState';
-import { PersonalSettingsKey } from '@/context/settings/feature/settings/domain/entity/personal/PersonalSettingsKey';
+import { SettingKey } from '../../../domain/entity/setting/SettingKey';
 
 export class SettingViewState {
-  key: EmailSettingsKey | PersonalSettingsKey;
+  key: SettingKey;
   title: string;
   description: string;
   control: SwitcherViewState | InputViewState;
