@@ -1,1 +1,0 @@
-export type EmailSettingsKey = 'marketingEmails' | 'securityEmails';

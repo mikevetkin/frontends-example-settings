@@ -1,0 +1,1 @@
+export type SettingKey = 'marketingEmails' | 'securityEmails' | 'fiscalization';

@@ -1,20 +1,16 @@
-import { SettingsKey } from '../../../domain/entity/SettingsKey';
-import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../../domain/functional-core/SettingsState';
 import { SettingViewState } from './SettingViewState';
 import { settingControlPresentation } from '../SettingControl/SettingControlPresentation';
-import { mapSettingTitle } from '../../../domain/mapper/mapSettingTitle';
-import { mapSettingDescription } from '../../../domain/mapper/mapSettingDescription';
+import { SettingItem } from '../../../domain/entity/Settings';
 
 export const settingPresentation = (
   state: SettingsState,
-  section: SettingsSectionKey,
-  setting: SettingsKey
+  setting: SettingItem
 ): SettingViewState => {
   return new SettingViewState({
     key: setting,
-    title: mapSettingTitle[section][setting],
-    description: mapSettingDescription[section][setting],
-    control: settingControlPresentation(state, section, setting),
+    title: setting.name,
+    description: setting.description,
+    control: settingControlPresentation(state),
   });
 };

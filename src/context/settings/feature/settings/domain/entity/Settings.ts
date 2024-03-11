@@ -1,6 +1,12 @@
-import { EmailSettings } from "./EmailSetting";
+import { SettingKey } from "./setting/SettingKey";
 
-export const Settings = {
-    heading: 'Settings',
-    sections: [EmailSettings],
-} as const;
+export type Settings = Record<SettingKey, boolean>;
+
+export const settings = (data: Partial<Settings> = {}): Settings => ({
+    'fiscalization': false,
+    'marketingEmails': false,
+    'securityEmails': false,
+    ...data,
+});
+
+export type SettingsValue = Settings[keyof Settings];

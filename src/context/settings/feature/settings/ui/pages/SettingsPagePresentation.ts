@@ -1,22 +1,22 @@
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
-import { SettingsSectionKey } from '../../domain/entity/SettingsSectionKey';
 import { SettingsState } from '../../domain/functional-core/SettingsState';
 import { SettingsPageViewState } from './SettingsPageViewState';
 import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import _ from 'lodash';
 import { sectionPresentation } from '../components/Section/SectionPresentation';
 import { saveOrDiscardPresenatation } from '../components/SaveOrDiscard/SaveOrDiscardPresentation';
+import { SettingsList } from '../../domain/entity/Settings';
 
 export const settingsPagePresentation = (state: SettingsState) => {
   const { original, draft, status } = state;
 
   return new SettingsPageViewState({
-    sections: (Object.keys(draft) as SettingsSectionKey[]).map((section) => {
+    sections: (SettingsList).map((section) => {
       switch (status) {
         case 'loading':
           return new SkeletonListViewState({
-            key: section,
-            list: Object.values(draft[section]).map(
+            key: section.key,
+            list: section.settings.map(
               () => new SkeletonViewState()
             ),
           });

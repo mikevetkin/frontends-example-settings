@@ -1,12 +1,9 @@
-import { Settings } from '../entity/Settings';
-import { SettingsKey } from '../entity/SettingsKey';
-import { SettingsSectionKey } from '../entity/SettingsSectionKey';
-import { SettingsValue } from '../entity/SettingsValue';
+import { Settings, SettingsValue } from '../entity/Settings';
+import { SettingKey } from '../entity/setting/SettingKey';
 
 export interface ChangeSettingEvent {
   type: 'ChangeSettingEvent';
-  sectionKey: SettingsSectionKey;
-  key: SettingsKey;
+  key: SettingKey;
   value: SettingsValue;
 }
 
