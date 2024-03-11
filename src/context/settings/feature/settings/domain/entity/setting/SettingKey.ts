@@ -1,1 +1,1 @@
-export type SettingKey = 'marketingEmails' | 'securityEmails' | 'fiscalization';
+export type SettingKey = 'marketingEmails' | 'securityEmails' | 'fiscalization' | 'ozonBonus';

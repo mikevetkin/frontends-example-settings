@@ -6,6 +6,7 @@ export const settings = (data: Partial<Settings> = {}): Settings => ({
     'fiscalization': false,
     'marketingEmails': false,
     'securityEmails': false,
+    'ozonBonus': false,
     ...data,
 });
 
