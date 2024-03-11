@@ -14,4 +14,4 @@ const FeatureFlagSettingsSction: Section = {
     settings: FeatureFlagSettingsList,
 } as const;
 
-export const SectionList = [EmailSettingsSection, FeatureFlagSettingsSction];
+export const SectionList: Section[] = [EmailSettingsSection, FeatureFlagSettingsSction];

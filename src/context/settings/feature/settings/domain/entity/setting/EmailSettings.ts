@@ -12,4 +12,4 @@ const SecurityEmails: Setting = {
     description: 'Receive emails about your account security.',
 } as const;
 
-export const EmailSettingsList = [MarketingEmails, SecurityEmails];
+export const EmailSettingsList: Setting[] = [MarketingEmails, SecurityEmails];

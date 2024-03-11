@@ -12,4 +12,4 @@ export const OzonBonus: Setting = {
     description: 'Enable OzonBonus for your account in personal cabinet',
 } as const;
 
-export const FeatureFlagSettingsList = [Fiscalization, OzonBonus];
+export const FeatureFlagSettingsList: Setting[] = [Fiscalization, OzonBonus];
