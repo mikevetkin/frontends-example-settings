@@ -18,14 +18,13 @@ describe('События в настройках', () => {
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
             key: 'marketingEmails',
             value: true,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].marketingEmails
+          state.draft.marketingEmails
         ).toBe(true);
       });
 
@@ -40,14 +39,13 @@ describe('События в настройках', () => {
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
             key: 'marketingEmails',
             value: false,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].marketingEmails
+          state.draft.marketingEmails
         ).toBe(false);
       });
 
@@ -62,14 +60,13 @@ describe('События в настройках', () => {
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
             key: 'securityEmails',
             value: true,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].securityEmails
+          state.draft.securityEmails
         ).toBe(true);
       });
 
@@ -84,14 +81,13 @@ describe('События в настройках', () => {
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
             key: 'securityEmails',
             value: false,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].securityEmails
+          state.draft.securityEmails
         ).toBe(false);
       });
     });
@@ -115,7 +111,7 @@ describe('События в настройках', () => {
     );
 
     test('Сбрасывает настройки черновика до оригинальных', () => {
-      expect(state.draft[SettingsSectionKey.EmailSettings].securityEmails).toBe(
+      expect(state.draft.securityEmails).toBe(
         false
       );
     });
@@ -140,7 +136,7 @@ describe('События в настройках', () => {
 
     test('Записывает настройки черновика как оригинальные', () => {
       expect(
-        state.original[SettingsSectionKey.EmailSettings].securityEmails
+        state.original.securityEmails
       ).toBe(true);
     });
   });
