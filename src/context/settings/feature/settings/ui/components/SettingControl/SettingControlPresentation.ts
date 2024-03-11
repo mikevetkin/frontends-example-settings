@@ -1,28 +1,25 @@
 import { SwitcherViewState } from '@/core/view-state/SwitcherViewState';
 import { SettingsState } from '@/context/settings/feature/settings/domain/functional-core/SettingsState';
+import { SettingKey } from '../../../domain/entity/setting/SettingKey';
 
 export function settingControlPresentation(
   state: SettingsState,
+  key: SettingKey
 ) {
-  const { status } = state;
+  const { status, draft } = state;
 
-  return new SwitcherViewState({
-    value: false, // FIXME
-    disabled: status === 'pending',
-  })
+  const value = draft[key];
 
-  // const value = draft[sectionKey][key];
-
-  // switch (typeof value) {
-  //   case 'boolean':
-  //     return new SwitcherViewState({
-  //       value,
-  //       disabled: status === 'pending',
-  //     });
-  //   case 'string':
-  //     return new InputViewState({
-  //       value,
-  //       disabled: status === 'pending',
-  //     });
-  // }
+  switch (typeof value) {
+    case 'boolean':
+      return new SwitcherViewState({
+        value,
+        disabled: status === 'pending',
+      });
+    // case 'string':
+    //   return new InputViewState({
+    //     value,
+    //     disabled: status === 'pending',
+    //   });
+  }
 }

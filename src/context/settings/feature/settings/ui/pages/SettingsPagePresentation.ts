@@ -5,13 +5,13 @@ import { SkeletonViewState } from '@/core/view-state/SkeletonViewState';
 import _ from 'lodash';
 import { sectionPresentation } from '../components/Section/SectionPresentation';
 import { saveOrDiscardPresenatation } from '../components/SaveOrDiscard/SaveOrDiscardPresentation';
-import { SettingsList } from '../../domain/entity/Settings';
+import { SectionList } from '../../domain/entity/section/SectionList';
 
 export const settingsPagePresentation = (state: SettingsState) => {
   const { original, draft, status } = state;
 
   return new SettingsPageViewState({
-    sections: (SettingsList).map((section) => {
+    sections: (SectionList).map((section) => {
       switch (status) {
         case 'loading':
           return new SkeletonListViewState({
