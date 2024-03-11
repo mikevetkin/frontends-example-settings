@@ -15,7 +15,7 @@ export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
       return changeSetting(state, event);
-    case 'ReceiveSave':
+    case 'ReceiveSaveEvent':
       return receiveSave(state);
   }
 };
@@ -28,10 +28,7 @@ function changeSetting(
     ...state,
     draft: {
       ...state.draft,
-      [event.sectionKey]: {
-        ...state.draft[event.sectionKey],
-        [event.key]: event.value,
-      },
+      [event.key]: event.value,
     },
   };
 }

@@ -1,7 +1,4 @@
-import { emailSettings } from '../entity/email-notifications/EmailSettings';
-import { EmailSettingsKey } from '../entity/email-notifications/EmailSettingsKey';
 import { settings } from '../entity/Settings';
-import { SettingsSectionKey } from '../entity/SettingsSectionKey';
 import { settingsReducer } from './SettingsReducer';
 import { settingsState } from './SettingsState';
 
@@ -12,21 +9,18 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: false,
-              }),
+              securityEmails: false,
             }),
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.MarketingEmails,
+            key: 'marketingEmails',
             value: true,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].marketingEmails
+          state.draft.marketingEmails
         ).toBe(true);
       });
 
@@ -34,21 +28,18 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: true,
-              }),
+              securityEmails: true,
             }),
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.MarketingEmails,
+            key: 'marketingEmails',
             value: false,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].marketingEmails
+          state.draft.marketingEmails
         ).toBe(false);
       });
 
@@ -56,21 +47,18 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: false,
-              }),
+              securityEmails: false,
             }),
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.SecurityEmails,
+            key: 'securityEmails',
             value: true,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].securityEmails
+          state.draft.securityEmails
         ).toBe(true);
       });
 
@@ -78,44 +66,19 @@ describe('События в настройках', () => {
         const state = settingsReducer(
           settingsState({
             draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                securityEmails: true,
-              }),
+              securityEmails: true,
             }),
           }),
           {
             type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.SecurityEmails,
+            key: 'securityEmails',
             value: false,
           }
         );
 
         expect(
-          state.draft[SettingsSectionKey.EmailSettings].securityEmails
+          state.draft.securityEmails
         ).toBe(false);
-      });
-
-      test('Выставляет email для получения уведомлений', () => {
-        const state = settingsReducer(
-          settingsState({
-            draft: settings({
-              [SettingsSectionKey.EmailSettings]: emailSettings({
-                yourEmail: '',
-              }),
-            }),
-          }),
-          {
-            type: 'ChangeSettingEvent',
-            sectionKey: SettingsSectionKey.EmailSettings,
-            key: EmailSettingsKey.YourEmail,
-            value: 'test@email.com',
-          }
-        );
-
-        expect(state.draft[SettingsSectionKey.EmailSettings].yourEmail).toBe(
-          'test@email.com'
-        );
       });
     });
   });
@@ -124,21 +87,17 @@ describe('События в настройках', () => {
     const state = settingsReducer(
       settingsState({
         original: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: false,
-          }),
+          securityEmails: false,
         }),
         draft: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: true,
-          }),
+          securityEmails: true,
         }),
       }),
       { type: 'DiscardEvent' }
     );
 
     test('Сбрасывает настройки черновика до оригинальных', () => {
-      expect(state.draft[SettingsSectionKey.EmailSettings].securityEmails).toBe(
+      expect(state.draft.securityEmails).toBe(
         false
       );
     });
@@ -148,22 +107,18 @@ describe('События в настройках', () => {
     const state = settingsReducer(
       settingsState({
         original: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: false,
-          }),
+          securityEmails: false,
         }),
         draft: settings({
-          [SettingsSectionKey.EmailSettings]: emailSettings({
-            securityEmails: true,
-          }),
+          securityEmails: true,
         }),
       }),
-      { type: 'ReceiveSave' }
+      { type: 'ReceiveSaveEvent' }
     );
 
     test('Записывает настройки черновика как оригинальные', () => {
       expect(
-        state.original[SettingsSectionKey.EmailSettings].securityEmails
+        state.original.securityEmails
       ).toBe(true);
     });
   });

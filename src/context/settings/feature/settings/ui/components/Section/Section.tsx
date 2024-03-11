@@ -1,14 +1,12 @@
 import { SectionViewState } from '@/context/settings/feature/settings/ui/components/Section/SectionViewState';
 import { Setting } from '../Setting/Setting';
-import { SettingsSectionKey } from '@/context/settings/feature/settings/domain/entity/SettingsSectionKey';
-import { SettingsKey } from '../../../domain/entity/SettingsKey';
-import { SettingsValue } from '../../../domain/entity/SettingsValue';
+import { SettingKey } from '../../../domain/entity/setting/SettingKey';
+import { SettingsValue } from '../../../domain/entity/Settings';
 
 interface SectionProps {
   viewState: SectionViewState;
   onChangeSetting: (
-    sectionKey: SettingsSectionKey,
-    key: SettingsKey,
+    key: SettingKey,
     value: SettingsValue
   ) => void;
 }
@@ -27,7 +25,7 @@ export const Section: React.FC<SectionProps> = ({
           <Setting
             viewState={setting}
             onChange={(value) =>
-              onChangeSetting(viewState.key, setting.key, value)
+              onChangeSetting(setting.key, value)
             }
             key={setting.key}
           />

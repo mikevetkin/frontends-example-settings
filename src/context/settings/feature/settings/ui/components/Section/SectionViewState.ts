@@ -1,8 +1,9 @@
-import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
+
+import { SectionKey } from '../../../domain/entity/section/SectionKey';
 import { SettingViewState } from '../Setting/SettingViewState';
 
 export class SectionViewState {
-  key: SettingsSectionKey;
+  key: SectionKey;
   heading: string;
   list: SettingViewState[];
 

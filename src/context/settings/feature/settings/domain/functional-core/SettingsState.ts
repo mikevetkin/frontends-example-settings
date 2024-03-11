@@ -1,4 +1,4 @@
-import { Settings, settings } from '../entity/Settings';
+import { Settings, settings } from "../entity/Settings";
 
 export interface SettingsState {
   status: 'loading' | 'idle' | 'pending';
