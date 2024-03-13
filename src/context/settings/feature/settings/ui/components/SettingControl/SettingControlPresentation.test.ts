@@ -25,14 +25,7 @@ test('Булевые настройки управляются свитчеро�
   expect(viewState).toBeInstanceOf(SwitcherViewState);
 });
 
-test.skip('Строковые настройки управляются инпутом', () => {
-  // const viewState = settingControlPresentation(
-  //   settingsState(),
-  //   SettingsSectionKey.EmailSettings,
-  //   EmailSettingsKey.YourEmail
-  // );
-  // expect(viewState).toBeInstanceOf(InputViewState);
-});
+test.skip('Строковые настройки управляются инпутом', () => {});
 
 describe('Если система отправляет данные', () => {
   const viewState = settingControlPresentation(
