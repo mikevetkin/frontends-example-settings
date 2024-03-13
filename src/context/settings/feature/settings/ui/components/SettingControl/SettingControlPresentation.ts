@@ -8,18 +8,8 @@ export function settingControlPresentation(
 ) {
   const { status, draft } = state;
 
-  const value = draft[key];
-
-  switch (typeof value) {
-    case 'boolean':
-      return new SwitcherViewState({
-        value,
-        disabled: status === 'pending',
-      });
-    // case 'string':
-    //   return new InputViewState({
-    //     value,
-    //     disabled: status === 'pending',
-    //   });
-  }
+  return new SwitcherViewState({
+    value: draft[key],
+    disabled: status === 'pending',
+  })
 }

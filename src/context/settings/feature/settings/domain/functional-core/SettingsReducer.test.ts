@@ -2,6 +2,9 @@ import { settings } from '../entity/Settings';
 import { settingsReducer } from './SettingsReducer';
 import { settingsState } from './SettingsState';
 
+/**
+ * Какие требования должна реализовать система
+ */
 describe('События в настройках', () => {
   describe('ChangeSettingEvent (Изменение настроек)', () => {
     describe('EmailNotifications (Раздел с email-уведомлениями)', () => {
@@ -103,6 +106,14 @@ describe('События в настройках', () => {
     });
   });
 
+  describe('SaveEvent (Отправка запроса на сохранение)', () => {
+    const state = settingsReducer(settingsState(), { type: 'SaveEvent' });
+
+    test('Переводит систему в состояние отправки данных', () => {
+      expect(state.status).toBe('pending');
+    });
+  });
+
   describe('ReceiveSave (Сохранение текущих настроек)', () => {
     const state = settingsReducer(
       settingsState({
@@ -120,14 +131,6 @@ describe('События в настройках', () => {
       expect(
         state.original.securityEmails
       ).toBe(true);
-    });
-  });
-
-  describe('SaveEvent', () => {
-    const state = settingsReducer(settingsState(), { type: 'SaveEvent' });
-
-    test('Переводит систему в состояние отправки данных', () => {
-      expect(state.status).toBe('pending');
     });
   });
 

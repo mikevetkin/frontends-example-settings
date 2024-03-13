@@ -1,6 +1,5 @@
 import { SkeletonListViewState } from '@/core/view-state/SkeletonListViewState';
 import { settings } from '../../domain/entity/Settings';
-import { emailSettings } from '../../domain/entity/email-notifications/EmailSettings';
 import { settingsState } from '../../domain/functional-core/SettingsState';
 import { SaveOrDiscardViewState } from '../components/SaveOrDiscard/SaveOrDiscardViewState';
 import { settingsPagePresentation } from './SettingsPagePresentation';
@@ -77,14 +76,10 @@ describe('Кнопки сохранения и сброса изменений',
     const viewState = settingsPagePresentation(
       settingsState({
         original: settings({
-          emailSettings: emailSettings({
-            marketingEmails: true,
-          }),
+          marketingEmails: true,
         }),
         draft: settings({
-          emailSettings: emailSettings({
-            marketingEmails: false,
-          }),
+          marketingEmails: false,
         }),
       })
     );

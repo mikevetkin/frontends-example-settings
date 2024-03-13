@@ -8,7 +8,7 @@ export const Fiscalization: Setting = {
 
 export const OzonBonus: Setting = {
     key: 'ozonBonus',
-    name: 'OzonBonus',
+    name: 'Ozon Bonus',
     description: 'Enable OzonBonus for your account in personal cabinet',
 } as const;
 

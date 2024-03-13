@@ -24,6 +24,9 @@ export interface ReceiveSaveEvent {
   type: 'ReceiveSaveEvent';
 }
 
+/**
+ * Какие события могут происходить в системе
+ */
 export type SettingsEvent =
   | ChangeSettingEvent
   | SaveEvent

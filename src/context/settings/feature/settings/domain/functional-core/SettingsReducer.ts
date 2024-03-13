@@ -5,6 +5,9 @@ import {
 } from './SettingsEvent';
 import { SettingsState } from './SettingsState';
 
+/**
+ * Как система должна реагировать присылаемые в неё события
+ */
 export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
   switch (event.type) {
     case 'SaveEvent':
