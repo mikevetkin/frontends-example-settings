@@ -1,5 +1,8 @@
-import { Settings, settings } from '../entity/Settings';
+import { Settings, settings } from "../entity/Settings";
 
+/**
+ * В каких состояниях может находится система
+ */
 export interface SettingsState {
   status: 'loading' | 'idle' | 'pending';
   original: Settings;

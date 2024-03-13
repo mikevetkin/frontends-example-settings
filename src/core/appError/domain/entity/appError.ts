@@ -3,10 +3,10 @@ export class AppError {
   message: string;
   path: string[];
   
-  constructor({ code, message, path}: { code: string, message: string, path: string[]}) {
-    this.code = code;
-    this.message = message;
-    this.path = path;
+  constructor(props: AppError) {
+    this.code = props.code;
+    this.message = props.message;
+    this.path = props.path;
   }
 }
 

@@ -1,12 +1,9 @@
-import { Settings } from '../entity/Settings';
-import { SettingsKey } from '../entity/SettingsKey';
-import { SettingsSectionKey } from '../entity/SettingsSectionKey';
-import { SettingsValue } from '../entity/SettingsValue';
+import { Settings, SettingsValue } from '../entity/Settings';
+import { SettingKey } from '../entity/setting/SettingKey';
 
 export interface ChangeSettingEvent {
   type: 'ChangeSettingEvent';
-  sectionKey: SettingsSectionKey;
-  key: SettingsKey;
+  key: SettingKey;
   value: SettingsValue;
 }
 
@@ -23,13 +20,16 @@ export interface ReceiveSettingsEvent {
   data: Settings;
 }
 
-export interface ReceiveSave {
-  type: 'ReceiveSave';
+export interface ReceiveSaveEvent {
+  type: 'ReceiveSaveEvent';
 }
 
+/**
+ * Какие события могут происходить в системе
+ */
 export type SettingsEvent =
   | ChangeSettingEvent
   | SaveEvent
   | DiscardEvent
   | ReceiveSettingsEvent
-  | ReceiveSave;
+  | ReceiveSaveEvent;

@@ -1,19 +1,18 @@
-import { SettingsKey } from '../../../domain/entity/SettingsKey';
-import { SettingsSectionKey } from '../../../domain/entity/SettingsSectionKey';
+import { Section } from '../../../domain/entity/section/Section';
 import { SettingsState } from '../../../domain/functional-core/SettingsState';
-import { mapSettingsSectionHeading } from '../../../domain/mapper/mapSettingsSectionHeading';
 import { settingPresentation } from '../Setting/SettingPresentation';
 import { SectionViewState } from './SectionViewState';
 
+
 export const sectionPresentation = (
   state: SettingsState,
-  section: SettingsSectionKey
+  section: Section
 ): SectionViewState => {
   return new SectionViewState({
-    key: section,
-    heading: mapSettingsSectionHeading[section],
-    list: (Object.keys(state.draft[section]) as SettingsKey[]).map((setting) =>
-      settingPresentation(state, section, setting)
+    key: section.key,
+    heading: section.heading,
+    list: section.settings.map((setting) =>
+      settingPresentation(state, setting)
     ),
   });
 };

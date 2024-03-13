@@ -5,6 +5,9 @@ import {
 } from './SettingsEvent';
 import { SettingsState } from './SettingsState';
 
+/**
+ * Как система должна реагировать присылаемые в неё события
+ */
 export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
   switch (event.type) {
     case 'SaveEvent':
@@ -15,7 +18,7 @@ export const settingsReducer = (state: SettingsState, event: SettingsEvent) => {
       return receiveSettings(state, event);
     case 'ChangeSettingEvent':
       return changeSetting(state, event);
-    case 'ReceiveSave':
+    case 'ReceiveSaveEvent':
       return receiveSave(state);
   }
 };
@@ -28,10 +31,7 @@ function changeSetting(
     ...state,
     draft: {
       ...state.draft,
-      [event.sectionKey]: {
-        ...state.draft[event.sectionKey],
-        [event.key]: event.value,
-      },
+      [event.key]: event.value,
     },
   };
 }

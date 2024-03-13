@@ -1,0 +1,1 @@
+export type SectionKey = 'emailSettings' | 'featureFlags';

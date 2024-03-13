@@ -1,14 +1,13 @@
-import {
-  EmailSettings,
-  emailSettings,
-} from './email-notifications/EmailSettings';
-import { SettingsSectionKey } from './SettingsSectionKey';
+import { SettingKey } from "./setting/SettingKey";
 
-export interface Settings {
-  [SettingsSectionKey.EmailSettings]: EmailSettings;
-}
+export type Settings = Record<SettingKey, boolean>;
 
 export const settings = (data: Partial<Settings> = {}): Settings => ({
-  emailSettings: emailSettings(),
-  ...data,
+    'fiscalization': false,
+    'marketingEmails': false,
+    'securityEmails': false,
+    'ozonBonus': false,
+    ...data,
 });
+
+export type SettingsValue = Settings[keyof Settings];
